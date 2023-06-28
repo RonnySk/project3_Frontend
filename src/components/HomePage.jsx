@@ -7,6 +7,9 @@ function HomePage() {
       <Link to="/loginPage">
         <p>Login</p>
       </Link>
+      <Link to="/signupPage">
+        <p>Signup</p>
+      </Link>
     </div>
   );
 }
