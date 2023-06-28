@@ -4,7 +4,9 @@ function HomePage() {
   return (
     <div>
       <h1>HomePage</h1>
-      <Link></Link>
+      <Link to="/loginPage">
+        <p>Login</p>
+      </Link>
     </div>
   );
 }
