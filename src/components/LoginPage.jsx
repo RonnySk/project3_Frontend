@@ -14,7 +14,22 @@ function LoginPage(props) {
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
 
-  const handleLoginSubmit = (e) => {};
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    const requestBody = { email, password };
+
+    axios
+      .post(`${API_URL}/auth/loginPage`, requestBody)
+      .then((response) => {
+        console.log("JWT token", response.data.authToken);
+
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      });
+  };
 
   return (
     <div className="LoginPage">
@@ -37,7 +52,7 @@ function LoginPage(props) {
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+      <Link to={"/signupPage"}> Sign Up</Link>
     </div>
   );
 }

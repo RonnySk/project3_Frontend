@@ -7,6 +7,7 @@ const API_URL = "http://localhost:5005";
 function SignupPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const [rsAgent, setrsAgent] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
@@ -15,11 +16,12 @@ function SignupPage(props) {
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handlersAgent = (e) => setrsAgent(e.target.value);
+  const handleName = (e) => setName(e.target.value);
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = { email, password };
+    const requestBody = { email, password, name };
 
     axios
       .post(`${API_URL}/auth/signupPage`, requestBody)
@@ -47,6 +49,9 @@ function SignupPage(props) {
           value={password}
           onChange={handlePassword}
         />
+
+        <label>Name:</label>
+        <input type="text" name="name" value={name} onChange={handleName} />
 
         <label>Are you Real Estate Agent?:</label>
         <input
