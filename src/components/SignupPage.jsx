@@ -13,7 +13,7 @@ function SignupPage(props) {
 
   const navigate = useNavigate();
 
-  const handleIsAgent = (e) => setIsAgent(!e.target.value);
+  const handleIsAgent = () => setIsAgent(!isAgent);
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
@@ -57,7 +57,7 @@ function SignupPage(props) {
         <input
           type="checkbox"
           name="isAgent"
-          value={isAgent}
+          checked={isAgent}
           onChange={handleIsAgent}
         />
 
