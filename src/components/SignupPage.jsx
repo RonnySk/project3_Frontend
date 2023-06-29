@@ -13,7 +13,7 @@ function SignupPage(props) {
 
   const navigate = useNavigate();
 
-  const handleIsAgent = () => setIsAgent(!isAgent);
+  const handleIsAgent = (e) => setIsAgent(!e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
@@ -54,7 +54,12 @@ function SignupPage(props) {
         <input type="text" name="name" value={name} onChange={handleName} />
 
         <label>Are you Real Estate Agent?:</label>
-        <input type="checkbox" value={isAgent} onChange={handleIsAgent} />
+        <input
+          type="checkbox"
+          name="isAgent"
+          value={isAgent}
+          onChange={handleIsAgent}
+        />
 
         <button type="submit">Sign Up</button>
       </form>
