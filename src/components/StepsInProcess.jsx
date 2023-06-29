@@ -35,7 +35,10 @@ function StepsInProcess() {
   const [step, setStep] = useState(1);
   const [checklist, setChecklist] = useState({
     1: { task1: false, task2: false, task3: false },
-    // Add more tasks for other steps if needed
+    2: { task1: false, task2: false, task3: false },
+    3: { task1: false, task2: false, task3: false },
+    4: { task1: false, task2: false, task3: false },
+    5: { task1: false, task2: false, task3: false },
   });
 
   const nextStep = () => {
@@ -58,14 +61,19 @@ function StepsInProcess() {
   };
 
   const stepTexts = {
-    1: "Zoek een hypotheekadviseur",
-    2: "Plan een afspraak",
-    // Remaining steps
+    1: "Find a mortgage advisor",
+    2: "Schedule an appointment",
+    3: "Find a house",
+    4: "Negotiation",
+    5: "Finalizing the deal",
   };
 
   const stepTasks = {
-    1: ["Taak 1: Kijk online voor adviseurs", "Taak 2: Lees recensies", "Taak 3: Vergelijk tarieven"],
-    // Add tasks for other steps if needed
+    1: ["Task 1: Look online for advisors", "Task 2: Read reviews", "Task 3: Compare rates"],
+    2: ["Task 1: Call and set up a meeting", "Task 2: Prepare questions", "Task 3: Confirm appointment"],
+    3: ["Task 1: Research potential neighborhoods", "Task 2: Attend open houses", "Task 3: Consider property features"],
+    4: ["Task 1: Determine your offer", "Task 2: Negotiate price and terms", "Task 3: Review and finalize agreement"],
+    5: ["Task 1: Complete financing arrangements", "Task 2: Conduct property inspection", "Task 3: Sign the closing documents"],
   };
 
   return (
@@ -89,10 +97,10 @@ function StepsInProcess() {
         ))}
       </ul>
       <button css={buttonStyle} onClick={prevStep}>
-        Vorige
+        Previous
       </button>
       <button css={buttonStyle} onClick={nextStep}>
-        Volgende
+        Next
       </button>
     </div>
   );

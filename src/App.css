@@ -36,3 +36,37 @@
     transform: rotate(360deg);
   }
 }
+
+/* Apply a modern, sleek style to the navigation bar */
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #333;
+  padding: 10px;
+}
+
+.navbar img {
+  width: 50px; /* Adjust the width as per your logo dimensions */
+  margin-right: 10px;
+}
+
+.navbar-nav {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item {
+  margin-right: 15px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #ff9800;
+}
