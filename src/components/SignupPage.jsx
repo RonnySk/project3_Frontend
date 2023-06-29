@@ -29,8 +29,8 @@ function SignupPage(props) {
         navigate("/loginPage");
       })
       .catch((error) => {
-        // const errorDescription = error.response.data.message;
-        // setErrorMessage(errorDescription);
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
       });
   };
 
@@ -43,13 +43,23 @@ function SignupPage(props) {
         <input type="email" name="email" value={email} onChange={handleEmail} />
 
         <label>Password:</label>
-        <input type="password" name="password" value={password} onChange={handlePassword} />
+        <input
+          type="password"
+          name="password"
+          value={password}
+          onChange={handlePassword}
+        />
 
         <label>Name:</label>
         <input type="text" name="name" value={name} onChange={handleName} />
 
         <label>Are you Real Estate Agent?:</label>
-        <input type="checkbox" name="rsAgent" value={rsAgent} onChange={handlersAgent} />
+        <input
+          type="checkbox"
+          name="rsAgent"
+          value={rsAgent}
+          onChange={handlersAgent}
+        />
 
         <button type="submit">Sign Up</button>
       </form>
