@@ -8,20 +8,20 @@ function SignupPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [rsAgent, setrsAgent] = useState("");
+  const [isAgent, setIsAgent] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
 
+  const handleIsAgent = () => setIsAgent(!isAgent);
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
-  const handlersAgent = (e) => setrsAgent(e.target.value);
   const handleName = (e) => setName(e.target.value);
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = { email, password, name };
+    const requestBody = { email, password, name, isAgent };
 
     axios
       .post(`${API_URL}/auth/signupPage`, requestBody)
@@ -29,8 +29,8 @@ function SignupPage(props) {
         navigate("/loginPage");
       })
       .catch((error) => {
-        // const errorDescription = error.response.data.message;
-        // setErrorMessage(errorDescription);
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
       });
   };
 
@@ -43,16 +43,27 @@ function SignupPage(props) {
         <input type="email" name="email" value={email} onChange={handleEmail} />
 
         <label>Password:</label>
-        <input type="password" name="password" value={password} onChange={handlePassword} />
+        <input
+          type="password"
+          name="password"
+          value={password}
+          onChange={handlePassword}
+        />
 
         <label>Name:</label>
         <input type="text" name="name" value={name} onChange={handleName} />
 
         <label>Are you Real Estate Agent?:</label>
-        <input type="checkbox" name="rsAgent" value={rsAgent} onChange={handlersAgent} />
+        <input
+          type="checkbox"
+          name="isAgent"
+          checked={isAgent}
+          onChange={handleIsAgent}
+        />
 
         <button type="submit">Sign Up</button>
       </form>
+      <p>Is "My Value" checked? {isAgent.toString()}</p>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
