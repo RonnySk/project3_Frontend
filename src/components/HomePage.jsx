@@ -1,18 +1,17 @@
-import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
+import RealEstateHome from "./RealEstateHome";
 
 function HomePage() {
   const { user } = useContext(AuthContext);
-  // console.log("home page test user", user);
 
   if (!user) {
     return <p>Loading ...</p>;
   }
   if (user.isAgent) {
-    return <h1>Real Estate Home {user.name} </h1>;
+    return <RealEstateHome />;
   } else {
-    return <h1>HomePage {user.name}</h1>;
+    return <h1>User HomePage {user.name}</h1>;
   }
 }
 
