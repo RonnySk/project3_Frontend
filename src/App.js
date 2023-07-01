@@ -5,6 +5,7 @@ import SignupPage from "./components/SignupPage";
 import ErrorPage from "./components/ErrorPage";
 import StepsInProcess from "./components/StepsInProcess";
 import NavBar from "./components/NavBar";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       <NavBar />
       <div className="App">
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/homePage" element={<HomePage />} />
           <Route path="/loginPage" element={<LoginPage />} />
           <Route path="/signupPage" element={<SignupPage />} />
           <Route path="*" element={<ErrorPage />} />

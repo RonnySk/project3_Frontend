@@ -5,17 +5,10 @@ import { useContext } from "react";
 function HomePage() {
   const { user } = useContext(AuthContext);
 
-  console.log("home page user info", user);
-
   return (
     <div>
-      <h1>HomePage </h1>
-      <Link to="/loginPage">
-        <p>Login</p>
-      </Link>
-      <Link to="/signupPage">
-        <p>Signup</p>
-      </Link>
+      <h1>HomePage {user.name} </h1>
+      <h2>Hello</h2>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "./Button";
-import Image from "./Image";
+// import Button from "./Button";
+// import Image from "./Image";
 
 function LandingPage() {
   return (
@@ -11,13 +11,14 @@ function LandingPage() {
             <div className="col">
               <h1>Welcome to Our Website</h1>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at tellus eu lectus commodo molestie ut non lectus. Donec
-                interdum ligula in mi maximus, vitae varius lorem commodo.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse at tellus eu lectus commodo molestie ut non lectus.
+                Donec interdum ligula in mi maximus, vitae varius lorem commodo.
               </p>
-              <Button text="Start Now" />
+              {/* <Button text="Start Now" /> */}
             </div>
             <div className="col">
-              <Image src="path/to/image" alt="Image" />
+              {/* <Image src="path/to/image" alt="Image" /> */}
             </div>
           </div>
         </div>

@@ -30,7 +30,7 @@ function LoginPage(props) {
 
         authenticateUser();
 
-        navigate("/");
+        navigate("/homePage");
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
