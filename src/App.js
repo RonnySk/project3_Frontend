@@ -6,6 +6,7 @@ import ErrorPage from "./components/ErrorPage";
 import StepsInProcess from "./components/StepsInProcess";
 import NavBar from "./components/NavBar";
 import LandingPage from "./components/LandingPage";
+import RealEstateHome from "./components/RealEstateHome";
 
 function App() {
   return (
@@ -15,10 +16,12 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/homePage" element={<HomePage />} />
+          <Route path="/realEstateHome" element={<RealEstateHome />} />
           <Route path="/loginPage" element={<LoginPage />} />
           <Route path="/signupPage" element={<SignupPage />} />
-          <Route path="*" element={<ErrorPage />} />
           <Route path="/steps" element={<StepsInProcess />} />
+
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
     </div>
