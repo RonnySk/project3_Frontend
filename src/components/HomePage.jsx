@@ -4,13 +4,13 @@ import { useContext } from "react";
 
 function HomePage() {
   const { user } = useContext(AuthContext);
+  console.log("home page test user", user);
 
-  return (
-    <div>
-      <h1>HomePage {user.name} </h1>
-      <h2>Hello</h2>
-    </div>
-  );
+  if (!user) {
+    return <p>Loading ...</p>;
+  } else {
+    return <h1>HomePage {user.name}</h1>;
+  }
 }
 
 export default HomePage;
