@@ -8,6 +8,9 @@ function HomePage() {
 
   if (!user) {
     return <p>Loading ...</p>;
+  }
+  if (user.isAgent) {
+    return <h1>Real Estate Home {user.name} </h1>;
   } else {
     return <h1>HomePage {user.name}</h1>;
   }
