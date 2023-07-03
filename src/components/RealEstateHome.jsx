@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 
 function RealEstateHome() {
-  return (
-    <div>
-      <h1>RealEstateHome teste</h1>
-    </div>
-  );
+  const { user } = useContext(AuthContext);
+
+  if (!user) {
+    return <p>Loading ...</p>;
+  } else {
+    return <h1>RealEstateHome teste {user.name}</h1>;
+  }
 }
 
 export default RealEstateHome;

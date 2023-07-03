@@ -7,9 +7,6 @@ function HomePage() {
 
   if (!user) {
     return <p>Loading ...</p>;
-  }
-  if (user.isAgent) {
-    return <RealEstateHome />;
   } else {
     return <h1>User HomePage {user.name}</h1>;
   }

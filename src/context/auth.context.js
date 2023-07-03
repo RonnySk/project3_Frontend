@@ -31,6 +31,12 @@ function AuthProviderWrapper(props) {
           setIsLoggedIn(true);
           setIsLoading(false);
           setUser(user);
+
+          if (!user.isAgent) {
+            return navigate("/homePage");
+          } else {
+            return navigate("/realEstateHome");
+          }
         })
         .catch((error) => {
           setIsLoggedIn(false);
