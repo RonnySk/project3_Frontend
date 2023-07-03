@@ -20,7 +20,7 @@ function LoginPage(props) {
     const requestBody = { email, password };
 
     axios
-      .post(`${API_URL}/auth/loginPage`, requestBody)
+      .post(`${API_URL}/auth/login`, requestBody)
       .then((response) => {
         console.log("JWT token", response.data.authToken);
 
@@ -55,7 +55,7 @@ function LoginPage(props) {
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p>Don't have an account yet?</p>
-      <Link to={"/signupPage"}> Sign Up</Link>
+      <Link to={"/signup"}> Sign Up</Link>
     </div>
   );
 }

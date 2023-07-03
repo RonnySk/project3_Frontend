@@ -33,7 +33,7 @@ function AuthProviderWrapper(props) {
           setUser(user);
 
           if (!user.isAgent) {
-            return navigate("/homePage");
+            return navigate("/home");
           } else {
             return navigate("/realEstateHome");
           }

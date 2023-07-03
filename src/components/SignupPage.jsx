@@ -24,9 +24,9 @@ function SignupPage(props) {
     const requestBody = { email, password, name, isAgent };
 
     axios
-      .post(`${API_URL}/auth/signupPage`, requestBody)
+      .post(`${API_URL}/auth/signup`, requestBody)
       .then((response) => {
-        navigate("/loginPage");
+        navigate("/login");
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
@@ -68,7 +68,7 @@ function SignupPage(props) {
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p>Already have account?</p>
-      <Link to={"/loginPage"}> Login</Link>
+      <Link to={"/login"}> Login</Link>
     </div>
   );
 }
