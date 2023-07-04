@@ -1,6 +1,7 @@
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 import RealEstateHome from "./RealEstateHome";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const { user } = useContext(AuthContext);
@@ -8,7 +9,12 @@ function HomePage() {
   if (!user) {
     return <p>Loading ...</p>;
   } else {
-    return <h1>User HomePage {user.name}</h1>;
+    return (
+      <div>
+        <h1>User HomePage {user.name}</h1>
+        <Link to="/calculator">Mortgage Calculator</Link>
+      </div>
+    );
   }
 }
 
