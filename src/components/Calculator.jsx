@@ -17,7 +17,6 @@ function Calculator() {
     const config = {
       headers: {
         // "X-Api-Key": `${process.env.X_API_KEY}`,
-        "X-Api-Key": "Kp49p/WlYVEDj7PvUuMfzA==oLGVdjm3HJQql4SN",
       },
     };
 
