@@ -1,6 +1,5 @@
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
-import RealEstateHome from "./RealEstateHome";
 import { Link } from "react-router-dom";
 
 function HomePage() {

@@ -66,14 +66,16 @@ function Calculator() {
 
         <button type="submit">Calculate</button>
       </form>
-
-      <h3>Monthly Payment: {calculatorData.monthly_payment.total}</h3>
-
-      <h3>Annual Payment: {calculatorData.annual_payment.total}</h3>
-
-      <h3>Total interest paid: {calculatorData.total_interest_paid}</h3>
     </div>
   );
+
+  // if (!calculatorData === []) {
+  //   return (<h3>Monthly Payment: {calculatorData.monthly_payment.total}</h3>
+
+  //   <h3>Annual Payment: {calculatorData.annual_payment.total}</h3>
+
+  //   <h3>Total interest paid: {calculatorData.total_interest_paid}</h3>)
+  //   }
 }
 
 export default Calculator;
