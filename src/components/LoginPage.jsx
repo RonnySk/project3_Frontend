@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
 
 const API_URL = "http://localhost:5005";
 
@@ -9,7 +10,7 @@ function LoginPage(props) {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
-  const navigate = useNavigate();
+  const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -19,11 +20,13 @@ function LoginPage(props) {
     const requestBody = { email, password };
 
     axios
-      .post(`${API_URL}/auth/loginPage`, requestBody)
+      .post(`${API_URL}/auth/login`, requestBody)
       .then((response) => {
         console.log("JWT token", response.data.authToken);
 
-        navigate("/");
+        storeToken(response.data.authToken);
+
+        authenticateUser();
       })
       .catch((error) => {
         if (error.response && error.response.data && error.response.data.message) {
@@ -55,7 +58,7 @@ function LoginPage(props) {
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 
         <p className="auth-link">
-          Don't have an account yet? <Link to={"/signupPage"}> Sign Up</Link>
+          Don't have an account yet? <Link to={"/signup"}> Sign Up</Link>
         </p>
       </div>
     </div>

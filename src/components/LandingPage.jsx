@@ -15,6 +15,7 @@ function LandingPage() {
             <Link to="/steps" className="cta-button">
               Get Started
             </Link>
+
           </div>
           <div className="image">
             <img src={Dreamhouse} alt="Dream house" />
