@@ -35,29 +35,36 @@ function SignupPage(props) {
   };
 
   return (
-    <div className="SignupPage">
-      <h1>Sign Up</h1>
+    <div className="auth-page">
+      <div className="auth-container">
+        <h1 className="auth-header">Sign Up</h1>
 
-      <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+        <form onSubmit={handleSignupSubmit} className="auth-form">
+          <label>Email:</label>
+          <input type="email" name="email" value={email} onChange={handleEmail} className="auth-input" />
 
-        <label>Password:</label>
-        <input type="password" name="password" value={password} onChange={handlePassword} />
+          <label>Password:</label>
+          <input type="password" name="password" value={password} onChange={handlePassword} className="auth-input" />
 
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
+          <label>Name:</label>
+          <input type="text" name="name" value={name} onChange={handleName} className="auth-input" />
 
-        <label>Are you Real Estate Agent?:</label>
-        <input type="checkbox" name="rsAgent" value={rsAgent} onChange={handlersAgent} />
+          <div className="auth-checkbox">
+            <input type="checkbox" name="rsAgent" value={rsAgent} onChange={handlersAgent} />
+            <label>Are you Real Estate Agent?</label>
+          </div>
 
-        <button type="submit">Sign Up</button>
-      </form>
+          <button type="submit" className="auth-btn">
+            Sign Up
+          </button>
+        </form>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      <p>Already have account?</p>
-      <Link to={"/loginPage"}> Login</Link>
+        <p className="auth-link">
+          Already have account? <Link to={"/loginPage"}> Login</Link>
+        </p>
+      </div>
     </div>
   );
 }

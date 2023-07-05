@@ -5,6 +5,7 @@ import SignupPage from "./components/SignupPage";
 import ErrorPage from "./components/ErrorPage";
 import StepsInProcess from "./components/StepsInProcess";
 import NavBar from "./components/NavBar";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/signupPage" element={<SignupPage />} />
           <Route path="*" element={<ErrorPage />} />
           <Route path="/steps" element={<StepsInProcess />} />
+          <Route path="/home" element={<LandingPage />} />
         </Routes>
       </div>
     </div>
