@@ -5,6 +5,7 @@ function Calculator() {
   const [loanAmount, setLoanAmount] = useState();
   const [interestRate, setInterestRate] = useState();
   const [duration, setDuration] = useState();
+  const [calculatorData, setCalculatorData] = useState([]);
 
   const handleloanAmount = (e) => setLoanAmount(e.target.value);
   const handleinterestRate = (e) => setInterestRate(e.target.value);
@@ -12,7 +13,6 @@ function Calculator() {
 
   const handleCalculatorSubmit = (e) => {
     e.preventDefault();
-    // const requestBody = { loanAmount, interestRate, duration };
 
     const config = {
       headers: {
@@ -26,13 +26,15 @@ function Calculator() {
     axios
       .get(url, config)
       .then((response) => {
-        console.log("Response from calculator API", response.data);
+        setCalculatorData(response.data);
       })
       .catch((error) => {
         // const errorDescription = error.response.data.message;
         // setErrorMessage(errorDescription);
       });
   };
+
+  console.log("Response from calculator API", calculatorData);
 
   return (
     <div>
@@ -65,6 +67,12 @@ function Calculator() {
 
         <button type="submit">Calculate</button>
       </form>
+
+      <h3>Monthly Payment: {calculatorData.monthly_payment.total}</h3>
+
+      <h3>Annual Payment: {calculatorData.annual_payment.total}</h3>
+
+      <h3>Total interest paid: {calculatorData.total_interest_paid}</h3>
     </div>
   );
 }
