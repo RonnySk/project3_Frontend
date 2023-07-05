@@ -1,34 +1,41 @@
 import React from "react";
-// import Button from "./Button";
-// import Image from "./Image";
+import "../App.css";
+import { Link } from "react-router-dom";
+import Dreamhouse from "../images/travel-cents-WYLuNY5JG4E-unsplash.jpg";
+import Comparison from "./Comparison";
 
 function LandingPage() {
   return (
-    <div>
-      <section>
-        <div className="container">
-          <div className="row">
-            <div className="col">
-              <h1>Welcome to Our Website</h1>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse at tellus eu lectus commodo molestie ut non lectus.
-                Donec interdum ligula in mi maximus, vitae varius lorem commodo.
-              </p>
-              {/* <Button text="Start Now" /> */}
-            </div>
-            <div className="col">
-              {/* <Image src="path/to/image" alt="Image" /> */}
-            </div>
+    <div className="container">
+      <main className="main">
+        <section className="section1">
+          <div className="text">
+            <h1>Get Your Dream House Now</h1>
+            <p>We simplify the home-buying process. Discover, tour, and buy your dream house with us.</p>
+            <Link to="/steps" className="cta-button">
+              Get Started
+            </Link>
+
           </div>
-        </div>
-      </section>
+          <div className="image">
+            <img src={Dreamhouse} alt="Dream house" />
+          </div>
+        </section>
 
-      {/* Section 2 */}
-      <section>{/* Add content for the second section */}</section>
+        <section className="section2">
+          <div className="carousel-placeholder">
+            <p>Carousel goes here</p>
+          </div>
+        </section>
 
-      {/* Section 3 */}
-      <section>{/* Add content for the third section */}</section>
+        <section>
+          <Comparison />
+        </section>
+      </main>
+
+      <footer className="footer">
+        <p>© 2023 Housing Done Right. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
