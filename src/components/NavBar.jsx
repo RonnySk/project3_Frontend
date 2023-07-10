@@ -14,43 +14,40 @@ function NavBar() {
         <img src={Logo} alt="Logo" />
       </Link>
 
+      <div className="nav-links-container">
+        {!isLoggedIn && (
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link to="/" className="nav-link">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/login" className="nav-link">
+                Login
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/signup" className="nav-link">
+                Signup
+              </Link>
+            </li>
+          </ul>
+        )}
 
-      {!isLoggedIn && (
-       <div className="nav-links-container">
-        <ul className="navbar-nav">
-          <li className="nav-item">
-            <Link to="/" className="nav-link">
-
-              Home
-            </Link>
-          </li>
-          <li className="nav-item">
-
-            <Link to="/login" className="nav-link">
-              Login
-            </Link>
-          </li>
-          <li className="nav-item">
-
-            <Link to="/signup" className="nav-link">
-              Signup
-            </Link>
-          </li>
-        </ul>
-      )}
-
-      {isLoggedIn && (
-        <ul className="navbar-nav">
-          <li className="nav-item">
-            <Link to="/steps" className="nav-link">
-              Steps
-            </Link>
-
-            <button onClick={logOutUser}>Logout</button>
-          </li>
-        </ul>
-</div>
-      )}
+        {isLoggedIn && (
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link to="/steps" className="nav-link">
+                Steps
+              </Link>
+            </li>
+            <li>
+              <button onClick={logOutUser}>Logout</button>
+            </li>
+          </ul>
+        )}
+      </div>
     </nav>
   );
 }

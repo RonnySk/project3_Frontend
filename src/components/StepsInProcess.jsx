@@ -1,34 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useState } from "react";
-
-const stepsStyle = css`
-  display: flex;
-  justify-content: space-evenly;
-  list-style-type: none;
-  margin-bottom: 30px;
-`;
-
-const stepStyle = (isActive, isCompleted) => css`
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: ${isCompleted ? "green" : isActive ? "blue" : "grey"};
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+import StepsList from "./StepsList";
+import TasksList from "./TaskList";
 
 const buttonStyle = css`
   display: block;
   margin: 0 auto;
   padding: 10px 20px;
   font-size: 16px;
-`;
-
-const checklistStyle = css`
-  list-style-type: none;
 `;
 
 function StepsInProcess() {
@@ -42,8 +22,12 @@ function StepsInProcess() {
   });
 
   const nextStep = () => {
-    if (step < 5 && Object.values(checklist[step]).every((val) => val)) {
-      setStep(step + 1);
+    if (step < 5) {
+      if (Object.values(checklist[step]).every((val) => val)) {
+        setStep(step + 1);
+      } else {
+        alert("Please complete all tasks before moving to the next step.");
+      }
     }
   };
 
@@ -78,24 +62,9 @@ function StepsInProcess() {
 
   return (
     <div>
-      <ul css={stepsStyle}>
-        {[...Array(5)].map((_, i) => {
-          const stepNumber = i + 1;
-          return (
-            <li css={stepStyle(stepNumber === step, stepNumber < step)} key={stepNumber}>
-              {stepNumber < step ? "✓" : stepNumber}
-            </li>
-          );
-        })}
-      </ul>
+      <StepsList currentStep={step} />
       <p>{stepTexts[step]}</p>
-      <ul css={checklistStyle}>
-        {stepTasks[step]?.map((task, i) => (
-          <li key={i}>
-            <input type="checkbox" checked={checklist[step][`task${i + 1}`]} onChange={() => toggleCheck(step, `task${i + 1}`)} /> {task}
-          </li>
-        ))}
-      </ul>
+      <TasksList tasks={stepTasks[step]} checklist={checklist} currentStep={step} toggleCheck={toggleCheck} />
       <button css={buttonStyle} onClick={prevStep}>
         Previous
       </button>
