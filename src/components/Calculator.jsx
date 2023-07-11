@@ -16,7 +16,7 @@ function Calculator() {
 
     const config = {
       headers: {
-        // "X-Api-Key": `${process.env.X_API_KEY}`,
+        "X-Api-Key": process.env.REACT_APP_X_API_KEY,
       },
     };
 
