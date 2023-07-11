@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar";
 import LandingPage from "./components/LandingPage";
 import RealEstateHome from "./components/RealEstateHome";
 import Calculator from "./components/Calculator";
+import CreateHouse from "./components/CreateHouse";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/calculator" element={<Calculator />} />
           <Route path="/steps" element={<StepsInProcess />} />
+          <Route path="/createHouse" element={<CreateHouse />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
