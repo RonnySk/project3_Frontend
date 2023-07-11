@@ -16,6 +16,8 @@ function CreateHouse() {
 
   const { user } = useContext(AuthContext);
 
+  const [userId, setUserId] = useState(user._id);
+
   const handleTitle = (e) => setTitle(e.target.value);
   const handlePrice = (e) => setPrice(e.target.value);
   const handleType = (e) => setType(e.target.value);
@@ -38,11 +40,14 @@ function CreateHouse() {
       year,
       garage,
       description,
+      userId,
     };
 
     axios
-      .post(`${API_URL}/house/createHouse`, requestBody, user._id)
-      .then((response) => {})
+      .post(`${API_URL}/house/createHouse`, requestBody)
+      .then((response) => {
+        "msg casa criada....";
+      })
       .catch((error) => {
         console.log(error);
       });
