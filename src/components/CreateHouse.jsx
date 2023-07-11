@@ -1,6 +1,5 @@
 import { useState, useContext } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 const API_URL = "http://localhost:5005";
 
@@ -27,32 +26,29 @@ function CreateHouse() {
   const handleGarage = (e) => setGarage(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
 
-  //   const handleHouseCreateSubmit = (e) => {
-  //     e.preventDefault();
-  //     const requestBody = { email, password };
+  const handleHouseCreateSubmit = (e) => {
+    e.preventDefault();
+    const requestBody = {
+      title,
+      price,
+      type,
+      size,
+      room,
+      bathroom,
+      year,
+      garage,
+      description,
+    };
 
-  //     axios
-  //       .post(`${API_URL}/auth/login`, requestBody)
-  //       .then((response) => {
-  //         console.log("JWT token", response.data.authToken);
+    axios
+      .post(`${API_URL}/createHouse`, requestBody, user._id)
+      .then((response) => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-  //         storeToken(response.data.authToken);
-
-  //         authenticateUser();
-  //       })
-  //       .catch((error) => {
-  //         if (
-  //           error.response &&
-  //           error.response.data &&
-  //           error.response.data.message
-  //         ) {
-  //           const errorDescription = error.response.data.message;
-  //           setErrorMessage(errorDescription);
-  //         } else {
-  //           setErrorMessage("An error occurred.");
-  //         }
-  //       });
-  //   };
+  console.log("User on create  House:", user);
 
   return (
     <div className="auth-page">
@@ -142,7 +138,7 @@ function CreateHouse() {
           />
 
           <button type="submit" className="auth-btn">
-            Login
+            Add new house
           </button>
         </form>
       </div>
