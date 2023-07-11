@@ -41,14 +41,12 @@ function CreateHouse() {
     };
 
     axios
-      .post(`${API_URL}/createHouse`, requestBody, user._id)
+      .post(`${API_URL}/house/createHouse`, requestBody, user._id)
       .then((response) => {})
       .catch((error) => {
         console.log(error);
       });
   };
-
-  console.log("User on create  House:", user);
 
   return (
     <div className="auth-page">
