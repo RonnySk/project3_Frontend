@@ -68,7 +68,8 @@
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  flex-direction: column;
 }
 
 .step1-img {
@@ -77,4 +78,8 @@
   height: auto;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.step1-button {
+  margin-top: 10px;
 }

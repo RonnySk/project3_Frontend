@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import image from "../images/Mortgage.jpg";
 import "../css/Step1.css";
+import Calculator from "./Calculator";
 
 function Step1Component() {
+  const [showCalculator, setShowCalculator] = useState(false);
+
+  const handleButtonClick = () => {
+    setShowCalculator(true);
+  };
+
   return (
     <div className="step1-container">
       <div className="step1-content">
@@ -30,9 +37,18 @@ function Step1Component() {
           A mortgage advisor acts as your advocate, working to find the best mortgage solution that aligns with your financial goals and
           circumstances. Their expertise and industry knowledge can save you time, money, and potential headaches along the way.
         </p>
-      </div>
-      <div className="step1-image">
-        <img src={image} alt="Step 1" className="step1-img" />
+        <div className="step1-image">
+          {!showCalculator ? (
+            <>
+              <img src={image} alt="Step 1" className="step1-img" />
+              <button className="step1-button" onClick={handleButtonClick}>
+                Calculate Mortgage
+              </button>
+            </>
+          ) : (
+            <Calculator />
+          )}
+        </div>
       </div>
     </div>
   );
