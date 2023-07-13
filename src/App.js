@@ -9,6 +9,7 @@ import LandingPage from "./components/LandingPage";
 import RealEstateHome from "./components/RealEstateHome";
 import Calculator from "./components/Calculator";
 import AddProperty from "./components/AddProperty";
+import OneProperty from "./components/OneProperty";
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/calculator" element={<Calculator />} />
           <Route path="/steps" element={<StepsInProcess />} />
-          <Route path="/AddProperty" element={<AddProperty />} />
+          <Route path="/addProperty" element={<AddProperty />} />
+          <Route path="/oneProperty/:property_id" element={<OneProperty />} />
 
           <Route path="*" element={<ErrorPage />} />
         </Routes>

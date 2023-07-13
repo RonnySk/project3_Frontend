@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
+import OneProperty from "./OneProperty";
 const API_URL = "http://localhost:5005";
 
 function AddProperty() {
@@ -56,8 +57,8 @@ function AddProperty() {
       .post(`${API_URL}/property/addProperty`, requestBody)
       .then((response) => {
         const { newProperty } = response.data;
-        console.log("new property add", newProperty);
-        navigate(`/${newProperty._id}`);
+
+        navigate(`/oneProperty/${newProperty._id}`);
       })
       .catch((error) => {
         console.log(error);
