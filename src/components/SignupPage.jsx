@@ -8,25 +8,25 @@ function SignupPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [rsAgent, setrsAgent] = useState("");
+  const [isAgent, setIsAgent] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
 
+  const handleIsAgent = () => setIsAgent(!isAgent);
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
-  const handlersAgent = (e) => setrsAgent(e.target.value);
   const handleName = (e) => setName(e.target.value);
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = { email, password, name };
+    const requestBody = { email, password, name, isAgent };
 
     axios
-      .post(`${API_URL}/auth/signupPage`, requestBody)
+      .post(`${API_URL}/auth/signup`, requestBody)
       .then((response) => {
-        navigate("/loginPage");
+        navigate("/login");
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
@@ -35,39 +35,41 @@ function SignupPage(props) {
   };
 
   return (
-    <div className="SignupPage">
-      <h1>Sign Up</h1>
+    <div className="auth-page">
+      <div className="auth-container">
+        <h1 className="auth-header">Sign Up</h1>
 
-      <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+        <form onSubmit={handleSignupSubmit} className="auth-form">
+          <label>Email:</label>
+          <input type="email" name="email" value={email} onChange={handleEmail} className="auth-input" />
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
 
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
+          <label>Password:</label>
+          <input type="password" name="password" value={password} onChange={handlePassword} className="auth-input" />
 
-        <label>Are you Real Estate Agent?:</label>
-        <input
-          type="checkbox"
-          name="rsAgent"
-          value={rsAgent}
-          onChange={handlersAgent}
-        />
 
-        <button type="submit">Sign Up</button>
-      </form>
+          <label>Name:</label>
+          <input type="text" name="name" value={name} onChange={handleName} className="auth-input" />
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      <p>Already have account?</p>
-      <Link to={"/loginPage"}> Login</Link>
+          <div className="auth-checkbox">
+            <input type="checkbox" name="isAgent" value={isAgent} onChange={handleIsAgent} />
+            <label>Are you Real Estate Agent?</label>
+          </div>
+
+          <button type="submit" className="auth-btn">
+            Sign Up
+          </button>
+        </form>
+
+
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+        <p className="auth-link">
+          Already have account? <Link to={"/login"}> Login</Link>
+        </p>
+      </div>
+
     </div>
   );
 }
