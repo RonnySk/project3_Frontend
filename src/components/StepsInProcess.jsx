@@ -1,35 +1,10 @@
-/** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
-import { useState } from "react";
-
-const stepsStyle = css`
-  display: flex;
-  justify-content: space-evenly;
-  list-style-type: none;
-  margin-bottom: 30px;
-`;
-
-const stepStyle = (isActive, isCompleted) => css`
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: ${isCompleted ? "green" : isActive ? "blue" : "grey"};
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const buttonStyle = css`
-  display: block;
-  margin: 0 auto;
-  padding: 10px 20px;
-  font-size: 16px;
-`;
-
-const checklistStyle = css`
-  list-style-type: none;
-`;
+import React, { useState } from "react";
+import Step1Component from "./Step1Component";
+import Step2Component from "./Step2Component";
+import StepsList from "./StepsList";
+import TasksList from "./TaskList";
+import Popup from "./PopUp";
+import "../css/StepsInProcess.css";
 
 function StepsInProcess() {
   const [step, setStep] = useState(1);
@@ -40,10 +15,15 @@ function StepsInProcess() {
     4: { task1: false, task2: false, task3: false },
     5: { task1: false, task2: false, task3: false },
   });
+  const [popupText, setPopupText] = useState("");
 
   const nextStep = () => {
-    if (step < 5 && Object.values(checklist[step]).every((val) => val)) {
-      setStep(step + 1);
+    if (step < 5) {
+      if (Object.values(checklist[step]).every((val) => val)) {
+        setStep(step + 1);
+      } else {
+        setPopupText("Please complete all tasks before moving to the next step.");
+      }
     }
   };
 
@@ -54,18 +34,20 @@ function StepsInProcess() {
   };
 
   const toggleCheck = (step, task) => {
-    setChecklist({
-      ...checklist,
-      [step]: { ...checklist[step], [task]: !checklist[step][task] },
-    });
+    setChecklist((prevChecklist) => ({
+      ...prevChecklist,
+      [step]: { ...prevChecklist[step], [task]: !prevChecklist[step][task] },
+    }));
   };
 
-  const stepTexts = {
-    1: "Find a mortgage advisor",
-    2: "Schedule an appointment",
-    3: "Find a house",
-    4: "Negotiation",
-    5: "Finalizing the deal",
+  const closePopup = () => {
+    setPopupText("");
+  };
+
+  const stepComponents = {
+    1: Step1Component,
+    2: Step2Component,
+    // Add other step components here...
   };
 
   const stepTasks = {
@@ -76,32 +58,22 @@ function StepsInProcess() {
     5: ["Task 1: Complete financing arrangements", "Task 2: Conduct property inspection", "Task 3: Sign the closing documents"],
   };
 
+  const StepComponent = stepComponents[step];
+
   return (
-    <div>
-      <ul css={stepsStyle}>
-        {[...Array(5)].map((_, i) => {
-          const stepNumber = i + 1;
-          return (
-            <li css={stepStyle(stepNumber === step, stepNumber < step)} key={stepNumber}>
-              {stepNumber < step ? "✓" : stepNumber}
-            </li>
-          );
-        })}
-      </ul>
-      <p>{stepTexts[step]}</p>
-      <ul css={checklistStyle}>
-        {stepTasks[step]?.map((task, i) => (
-          <li key={i}>
-            <input type="checkbox" checked={checklist[step][`task${i + 1}`]} onChange={() => toggleCheck(step, `task${i + 1}`)} /> {task}
-          </li>
-        ))}
-      </ul>
-      <button css={buttonStyle} onClick={prevStep}>
-        Previous
-      </button>
-      <button css={buttonStyle} onClick={nextStep}>
-        Next
-      </button>
+    <div className="steps-in-process">
+      <StepsList currentStep={step} />
+      {StepComponent && <StepComponent />}
+      <TasksList tasks={stepTasks[step]} checklist={checklist} currentStep={step} toggleCheck={toggleCheck} />
+      <div className="button-container">
+        <button className="button" onClick={prevStep}>
+          Previous
+        </button>
+        <button className="button" onClick={nextStep}>
+          Next
+        </button>
+      </div>
+      {popupText && <Popup text={popupText} onClose={closePopup} />}
     </div>
   );
 }

@@ -1,0 +1,80 @@
+/* Step 1 Component */
+.step1-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  padding: 40px;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.step1-content {
+  flex: 1;
+  max-width: 600px;
+  padding: 40px;
+}
+
+.step1-heading {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+.step1-text {
+  font-size: 18px;
+  color: #666666;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.step1-subheading {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.step1-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.step1-list li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #666666;
+}
+
+.step1-list li::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #333333;
+}
+
+.step1-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step1-img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}

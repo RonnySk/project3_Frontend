@@ -14,8 +14,10 @@ function NavBar() {
         <img src={Logo} alt="Logo" />
       </Link>
 
+
       {!isLoggedIn && (
         <div className="nav-links-container">
+
           <ul className="navbar-nav">
             <li className="nav-item">
               <Link to="/" className="nav-link">

@@ -24,6 +24,7 @@ function App() {
           <Route path="/calculator" element={<Calculator />} />
           <Route path="/steps" element={<StepsInProcess />} />
           <Route path="/AddProperty" element={<AddProperty />} />
+
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
