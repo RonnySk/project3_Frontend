@@ -3,8 +3,10 @@ import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 const API_URL = "http://localhost:5005";
 
-function CreateHouse() {
+function AddProperty() {
   const [title, setTitle] = useState("");
+  const [street, setStreet] = useState("");
+  const [propertyNumber, setPropertyNumber] = useState("");
   const [price, setPrice] = useState("");
   const [type, setType] = useState("");
   const [size, setSize] = useState("");
@@ -19,6 +21,8 @@ function CreateHouse() {
   const [userId, setUserId] = useState(user._id);
 
   const handleTitle = (e) => setTitle(e.target.value);
+  const handleStreet = (e) => setStreet(e.target.value);
+  const handlePropertyNumber = (e) => setPropertyNumber(e.target.value);
   const handlePrice = (e) => setPrice(e.target.value);
   const handleType = (e) => setType(e.target.value);
   const handleSize = (e) => setSize(e.target.value);
@@ -28,10 +32,12 @@ function CreateHouse() {
   const handleGarage = (e) => setGarage(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
 
-  const handleHouseCreateSubmit = (e) => {
+  const handleAddPropertySubmit = (e) => {
     e.preventDefault();
     const requestBody = {
       title,
+      street,
+      propertyNumber,
       price,
       type,
       size,
@@ -44,9 +50,9 @@ function CreateHouse() {
     };
 
     axios
-      .post(`${API_URL}/house/createHouse`, requestBody)
+      .post(`${API_URL}/property/addProperty`, requestBody)
       .then((response) => {
-        "msg casa criada....";
+        console.log("new property add", response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -56,9 +62,9 @@ function CreateHouse() {
   return (
     <div className="auth-page">
       <div className="auth-container">
-        <h1 className="auth-header">Login</h1>
+        <h1 className="auth-header">Add property</h1>
 
-        <form onSubmit={handleHouseCreateSubmit} className="auth-form">
+        <form onSubmit={handleAddPropertySubmit} className="auth-form">
           <label>Title:</label>
           <input
             type="text"
@@ -74,6 +80,24 @@ function CreateHouse() {
             name="price"
             value={price}
             onChange={handlePrice}
+            className="auth-input"
+          />
+
+          <label>Street:</label>
+          <input
+            type="text"
+            name="street"
+            value={street}
+            onChange={handleStreet}
+            className="auth-input"
+          />
+
+          <label>Property number:</label>
+          <input
+            type="number"
+            name="propertyNumber"
+            value={propertyNumber}
+            onChange={handlePropertyNumber}
             className="auth-input"
           />
 
@@ -141,7 +165,7 @@ function CreateHouse() {
           />
 
           <button type="submit" className="auth-btn">
-            Add new house
+            Add property
           </button>
         </form>
       </div>
@@ -149,4 +173,4 @@ function CreateHouse() {
   );
 }
 
-export default CreateHouse;
+export default AddProperty;

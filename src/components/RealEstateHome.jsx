@@ -11,7 +11,7 @@ function RealEstateHome() {
     return (
       <div>
         <h1>RealEstateHome teste {user.name}</h1>
-        <Link to="/createHouse">Add new house</Link>
+        <Link to="/addProperty">Add new Property</Link>
       </div>
     );
   }
