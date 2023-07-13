@@ -1,6 +1,8 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
+import { useNavigate } from "react-router-dom";
+import OneProperty from "./OneProperty";
 const API_URL = "http://localhost:5005";
 
 function AddProperty() {
@@ -19,6 +21,8 @@ function AddProperty() {
   const { user } = useContext(AuthContext);
 
   const [userId, setUserId] = useState(user._id);
+
+  const navigate = useNavigate();
 
   const handleTitle = (e) => setTitle(e.target.value);
   const handleStreet = (e) => setStreet(e.target.value);
@@ -52,7 +56,9 @@ function AddProperty() {
     axios
       .post(`${API_URL}/property/addProperty`, requestBody)
       .then((response) => {
-        console.log("new property add", response.data);
+        const { newProperty } = response.data;
+
+        navigate(`/oneProperty/${newProperty._id}`);
       })
       .catch((error) => {
         console.log(error);
