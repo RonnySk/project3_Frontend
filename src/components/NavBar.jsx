@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 
 function NavBar() {
-  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
   return (
     <nav className="navbar">
@@ -14,8 +14,10 @@ function NavBar() {
         <img src={Logo} alt="Logo" />
       </Link>
 
-      <div className="nav-links-container">
-        {!isLoggedIn && (
+
+      {!isLoggedIn && (
+        <div className="nav-links-container">
+
           <ul className="navbar-nav">
             <li className="nav-item">
               <Link to="/" className="nav-link">
@@ -33,21 +35,20 @@ function NavBar() {
               </Link>
             </li>
           </ul>
-        )}
+        </div>
+      )}
 
-        {isLoggedIn && (
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link to="/steps" className="nav-link">
-                Steps
-              </Link>
-            </li>
-            <li>
-              <button onClick={logOutUser}>Logout</button>
-            </li>
-          </ul>
-        )}
-      </div>
+      {isLoggedIn && (
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <Link to="/steps" className="nav-link">
+              Steps
+            </Link>
+
+            <button onClick={logOutUser}>Logout</button>
+          </li>
+        </ul>
+      )}
     </nav>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
 function RealEstateHome() {
@@ -7,7 +8,12 @@ function RealEstateHome() {
   if (!user) {
     return <p>Loading ...</p>;
   } else {
-    return <h1>RealEstateHome teste {user.name}</h1>;
+    return (
+      <div>
+        <h1>RealEstateHome teste {user.name}</h1>
+        <Link to="/addProperty">Add new Property</Link>
+      </div>
+    );
   }
 }
 

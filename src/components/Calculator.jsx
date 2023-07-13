@@ -16,7 +16,7 @@ function Calculator() {
 
     const config = {
       headers: {
-        // "X-Api-Key": `${process.env.X_API_KEY}`,
+        "X-Api-Key": process.env.REACT_APP_X_API_KEY,
       },
     };
 
@@ -28,8 +28,7 @@ function Calculator() {
         setCalculatorData(response.data);
       })
       .catch((error) => {
-        // const errorDescription = error.response.data.message;
-        // setErrorMessage(errorDescription);
+        console.log("Error from Calculator API:", error.response.data.message);
       });
   };
 
@@ -38,7 +37,6 @@ function Calculator() {
   return (
     <div>
       <h1>Mortgage Calculator</h1>
-
       <form onSubmit={handleCalculatorSubmit}>
         <label>Loan Amount</label>
         <input
@@ -67,11 +65,13 @@ function Calculator() {
         <button type="submit">Calculate</button>
       </form>
 
-      <h3>Monthly Payment: {calculatorData.monthly_payment.total}</h3>
-
-      <h3>Annual Payment: {calculatorData.annual_payment.total}</h3>
-
-      <h3>Total interest paid: {calculatorData.total_interest_paid}</h3>
+      {calculatorData.length !== 0
+        ? [
+            <h3>Monthly Payment: {calculatorData.monthly_payment.total}</h3>,
+            <h3>Total Interest Rate: {calculatorData.total_interest_paid}</h3>,
+            <h3>Annual Payment: {calculatorData.annual_payment.total}</h3>,
+          ]
+        : null}
     </div>
   );
 }
