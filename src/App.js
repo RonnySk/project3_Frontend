@@ -26,9 +26,9 @@ function App() {
           <Route path="/calculator" element={<Calculator />} />
           <Route path="/steps" element={<StepsInProcess />} />
           <Route path="/addProperty" element={<AddProperty />} />
-          <Route path="/oneProperty/:property_id" element={<OneProperty />} />
+          <Route path="/oneproperty/:property_id" element={<OneProperty />} />
           <Route
-            path="/oneProperty/allProperties"
+            path="/oneproperty/allProperties"
             element={<AllProperties />}
           />
 

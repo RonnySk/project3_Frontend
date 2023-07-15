@@ -58,7 +58,7 @@ function AddProperty() {
       .then((response) => {
         const { newProperty } = response.data;
 
-        navigate(`/oneProperty/${newProperty._id}`);
+        navigate(`/oneproperty/${newProperty._id}`);
       })
       .catch((error) => {
         console.log(error);
