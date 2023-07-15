@@ -10,6 +10,7 @@ import RealEstateHome from "./components/RealEstateHome";
 import Calculator from "./components/Calculator";
 import AddProperty from "./components/AddProperty";
 import OneProperty from "./components/OneProperty";
+import AllProperties from "./components/AllProperties";
 
 function App() {
   return (
@@ -26,6 +27,10 @@ function App() {
           <Route path="/steps" element={<StepsInProcess />} />
           <Route path="/addProperty" element={<AddProperty />} />
           <Route path="/oneProperty/:property_id" element={<OneProperty />} />
+          <Route
+            path="/oneProperty/allProperties"
+            element={<AllProperties />}
+          />
 
           <Route path="*" element={<ErrorPage />} />
         </Routes>
