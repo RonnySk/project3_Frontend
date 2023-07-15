@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../css/Calculator.css";
+const API_URL = "http://localhost:5005";
 
 function Calculator() {
   const [loanAmount, setLoanAmount] = useState("");
@@ -33,6 +34,24 @@ function Calculator() {
       });
   };
 
+  const handleSaveInfo = (e) => {
+    e.preventDefault();
+
+    const requestBody = {
+      loanAmount,
+      calculatorData,
+    };
+
+    axios
+      .post(`${API_URL}/api/housingprofile`, requestBody)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="calculator-container">
       <h1 className="calculator-heading">Mortgage Calculator</h1>
@@ -62,6 +81,12 @@ function Calculator() {
           <h3 className="calculator-result">Monthly Payment: {calculatorData.monthly_payment.total}</h3>
           <h3 className="calculator-result">Total Interest Rate: {calculatorData.total_interest_paid}</h3>
           <h3 className="calculator-result">Annual Payment: {calculatorData.annual_payment.total}</h3>
+
+          <form className="calculator-form" onSubmit={handleSaveInfo}>
+            <button type="submit" className="calculator-button">
+              Save Info
+            </button>
+          </form>
         </div>
       )}
     </div>
