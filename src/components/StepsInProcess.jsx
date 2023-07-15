@@ -51,7 +51,7 @@ function StepsInProcess() {
   };
 
   const stepTasks = {
-    1: ["Task 1: Look online for advisors", "Task 2: Read reviews", "Task 3: Compare rates"],
+    1: ["Task 1: Look online for advisors", "Task 2: Read reviews", "Task 3: Compare rates", "Task 4: Know how much you can afford"],
     2: ["Task 1: Call and set up a meeting", "Task 2: Prepare questions", "Task 3: Confirm appointment"],
     3: ["Task 1: Research potential neighborhoods", "Task 2: Attend open houses", "Task 3: Consider property features"],
     4: ["Task 1: Determine your offer", "Task 2: Negotiate price and terms", "Task 3: Review and finalize agreement"],
