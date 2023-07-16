@@ -38,6 +38,7 @@ function LoginPage(props) {
         } else {
           setErrorMessage("An error occurred.");
         }
+        console.log("err at login", error);
       });
   };
 

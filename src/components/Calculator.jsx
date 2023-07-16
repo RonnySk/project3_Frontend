@@ -30,7 +30,7 @@ function Calculator() {
         setCalculatorData(response.data);
       })
       .catch((error) => {
-        console.log("Error from Calculator API:", error.response.data.message);
+        console.log("Error from Calculator API:", error);
       });
   };
 
