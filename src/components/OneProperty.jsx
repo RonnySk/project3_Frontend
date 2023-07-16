@@ -1,8 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import { API_URL } from "./ReactApi";
-const API_URL = "http://localhost:5005";
+import { API_URL } from "../config/config.index";
 
 function OneProperty() {
   const [property, setProperty] = useState("");

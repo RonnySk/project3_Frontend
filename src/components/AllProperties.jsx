@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-const API_URL = "http://localhost:5005";
+import { API_URL } from "../config/config.index";
 
 function AllProperties() {
   const [allProperties, setAllProperties] = useState([]);

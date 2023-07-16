@@ -2,8 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
-import OneProperty from "./OneProperty";
-const API_URL = "http://localhost:5005";
+import { API_URL } from "../config/config.index";
 
 function AddProperty() {
   const [title, setTitle] = useState("");
