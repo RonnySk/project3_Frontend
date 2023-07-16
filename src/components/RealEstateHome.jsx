@@ -12,7 +12,9 @@ function RealEstateHome() {
       <div>
         <h1>RealEstateHome teste {user.name}</h1>
         <Link to="/addProperty">Add new Property</Link>
-        <Link to="/oneproperty/allProperties">See all properties</Link>
+        <Link to={`/realestateallproperties/${user._id}`}>
+          See your properties
+        </Link>
       </div>
     );
   }
