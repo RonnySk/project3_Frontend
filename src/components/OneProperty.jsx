@@ -1,11 +1,14 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { API_URL } from "../config/config.index";
+import { AuthContext } from "../context/auth.context";
 
 function OneProperty() {
+  const { user } = useContext(AuthContext);
   const [property, setProperty] = useState("");
   const { property_id } = useParams();
+  const navigate = useNavigate();
 
   const getProperty = () => {
     axios
@@ -24,9 +27,9 @@ function OneProperty() {
 
   const handleDelete = () => {
     axios
-      .delete(`${API_URL}/property/housingprofile`)
+      .delete(`${API_URL}/property/${property_id}`, property_id)
       .then((response) => {
-        console.log(response.data);
+        navigate(`/realestateallproperties/${user._id}`);
       })
       .catch((error) => {
         console.log(error);
@@ -47,17 +50,25 @@ function OneProperty() {
         <p>{property.year}</p>
         <p>{property.garage}</p>
         <p>{property.description}</p>
-        <button
-          type="submit"
-          className="calculator-button"
-          onClick={handleDelete}
-        >
-          Update
-        </button>
+        {user.isAgent && (
+          <div>
+            <button
+              type="submit"
+              className="calculator-button"
+              // onClick={handleDelete}
+            >
+              Update
+            </button>
 
-        <button type="submit" className="calculator-button">
-          Delete
-        </button>
+            <button
+              type="submit"
+              className="calculator-button"
+              onClick={handleDelete}
+            >
+              Delete
+            </button>
+          </div>
+        )}
       </div>
     );
   }
