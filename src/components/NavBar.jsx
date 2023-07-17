@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
 import Logo from "../images/Logo_HousingRY.png";
@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 
 function NavBar() {
-  const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn, logOutUser, user } = useContext(AuthContext);
 
   return (
     <nav className="navbar">
@@ -14,10 +14,8 @@ function NavBar() {
         <img src={Logo} alt="Logo" />
       </Link>
 
-
       {!isLoggedIn && (
         <div className="nav-links-container">
-
           <ul className="navbar-nav">
             <li className="nav-item">
               <Link to="/" className="nav-link">
@@ -41,6 +39,15 @@ function NavBar() {
       {isLoggedIn && (
         <ul className="navbar-nav">
           <li className="nav-item">
+            {user.isAgent ? (
+              <Link to="/realEstateHome" className="nav-link">
+                Home
+              </Link>
+            ) : (
+              <Link to="/home" className="nav-link">
+                Home
+              </Link>
+            )}
             <Link to="/steps" className="nav-link">
               Steps
             </Link>

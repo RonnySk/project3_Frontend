@@ -12,7 +12,8 @@ function RealEstateAgentProperties() {
     axios
       .get(`${API_URL}/property/realestateallproperties/${agent_id}`, agent_id)
       .then((response) => {
-        setRealEstateProperties(response.data);
+        const { allRealEstateProperties } = response.data;
+        setRealEstateProperties(allRealEstateProperties);
       })
       .catch((error) => console.log(error));
   };
@@ -23,11 +24,20 @@ function RealEstateAgentProperties() {
 
   console.log("allRealEstateProperties", realEstateProperties);
 
-  return (
-    <div>
-      <h1>Your Properties</h1>
-    </div>
-  );
+  if (!realEstateProperties) {
+    return <p>Loading ...</p>;
+  } else {
+    return (
+      <div>
+        <h1>Your properties</h1>
+        {/* {realEstateProperties.map((property) => (
+          <div>
+            <p>{property.title}</p>
+          </div>
+        ))} */}
+      </div>
+    );
+  }
 }
 
 export default RealEstateAgentProperties;
