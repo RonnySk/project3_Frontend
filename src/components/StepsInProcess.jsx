@@ -5,6 +5,7 @@ import StepsList from "./StepsList";
 import TasksList from "./TaskList";
 import Popup from "./PopUp";
 import "../css/StepsInProcess.css";
+import Chatbot from "./ChatBot";
 
 function StepsInProcess() {
   const [step, setStep] = useState(1);
@@ -64,6 +65,7 @@ function StepsInProcess() {
     <div className="steps-in-process">
       <StepsList currentStep={step} />
       {StepComponent && <StepComponent />}
+      <Chatbot />
       <TasksList tasks={stepTasks[step]} checklist={checklist} currentStep={step} toggleCheck={toggleCheck} />
       <div className="button-container">
         <button className="button" onClick={prevStep}>
