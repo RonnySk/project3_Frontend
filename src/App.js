@@ -13,6 +13,7 @@ import OneProperty from "./components/OneProperty";
 import AllProperties from "./components/AllProperties";
 import RealEstateAgentProperties from "./components/RealEstateAgentProperties";
 import Chatbot from "./components/ChatBot";
+import UploadWidget from "./components/UploadWidget";
 
 function App() {
   return (
@@ -23,14 +24,20 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/realEstateHome" element={<RealEstateHome />} />
-          <Route path="/realestateallproperties/:agent_id" element={<RealEstateAgentProperties />} />
+          <Route
+            path="/realestateallproperties/:agent_id"
+            element={<RealEstateAgentProperties />}
+          />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/calculator" element={<Calculator />} />
           <Route path="/steps" element={<StepsInProcess />} />
           <Route path="/addProperty" element={<AddProperty />} />
           <Route path="/oneproperty/:property_id" element={<OneProperty />} />
-          <Route path="/oneproperty/allProperties" element={<AllProperties />} />
+          <Route
+            path="/oneproperty/allProperties"
+            element={<AllProperties />}
+          />
           <Route path="/steps" element={<Chatbot />} />
 
           <Route path="*" element={<ErrorPage />} />

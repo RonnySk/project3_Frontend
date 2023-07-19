@@ -17,6 +17,10 @@ function AddProperty() {
   const [garage, setGarage] = useState("");
   const [description, setDescription] = useState("");
 
+  const [file, setFile] = useState(null);
+  const [imgUrl, setImgUrl] = useState("");
+  // const [loading, setLoading] = useState(false);
+
   const { user } = useContext(AuthContext);
 
   const [userId, setUserId] = useState(user._id);
@@ -34,6 +38,19 @@ function AddProperty() {
   const handleYear = (e) => setYear(e.target.value);
   const handleGarage = (e) => setGarage(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
+  const handleSelectFile = (e) => setFile(e.target.files[0]);
+
+  const handleUpload = async () => {
+    try {
+      const data = new FormData();
+      data.append("my_file", file);
+      const res = await axios.post(`${API_URL}/property/upload`, data);
+      setImgUrl(res.data.url);
+      console.log("response api", res.data.url);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   const handleAddPropertySubmit = (e) => {
     e.preventDefault();
@@ -50,6 +67,7 @@ function AddProperty() {
       garage,
       description,
       userId,
+      imgUrl,
     };
 
     axios
@@ -69,6 +87,20 @@ function AddProperty() {
       <div className="auth-container">
         <h1 className="auth-header">Add property</h1>
 
+        <label>Add fotos:</label>
+        <input
+          type="file"
+          id="file"
+          className="auth-input"
+          onChange={handleSelectFile}
+          multiple={false}
+        />
+        <button onClick={handleUpload} className="auth-btn">
+          Add img
+        </button>
+
+        {imgUrl && <img src={imgUrl} alt="property"></img>}
+
         <form onSubmit={handleAddPropertySubmit} className="auth-form">
           <label>Title:</label>
           <input
@@ -78,7 +110,6 @@ function AddProperty() {
             onChange={handleTitle}
             className="auth-input"
           />
-
           <label>Price:</label>
           <input
             type="number"
@@ -87,7 +118,6 @@ function AddProperty() {
             onChange={handlePrice}
             className="auth-input"
           />
-
           <label>Street:</label>
           <input
             type="text"
@@ -96,7 +126,6 @@ function AddProperty() {
             onChange={handleStreet}
             className="auth-input"
           />
-
           <label>Property number:</label>
           <input
             type="number"
@@ -105,7 +134,6 @@ function AddProperty() {
             onChange={handlePropertyNumber}
             className="auth-input"
           />
-
           <label>Type:</label>
           <input
             type="text"
@@ -114,7 +142,6 @@ function AddProperty() {
             onChange={handleType}
             className="auth-input"
           />
-
           <label>Size:</label>
           <input
             type="number"
@@ -123,7 +150,6 @@ function AddProperty() {
             onChange={handleSize}
             className="auth-input"
           />
-
           <label>Room:</label>
           <input
             type="number"
@@ -132,7 +158,6 @@ function AddProperty() {
             onChange={handleRoom}
             className="auth-input"
           />
-
           <label>Bathroom:</label>
           <input
             type="number"
@@ -141,7 +166,6 @@ function AddProperty() {
             onChange={handleBathroom}
             className="auth-input"
           />
-
           <label>Year:</label>
           <input
             type="number"
@@ -150,7 +174,6 @@ function AddProperty() {
             onChange={handleYear}
             className="auth-input"
           />
-
           <label>Garage:</label>
           <input
             type="number"
@@ -159,7 +182,6 @@ function AddProperty() {
             onChange={handleGarage}
             className="auth-input"
           />
-
           <label>Description:</label>
           <input
             type="text"
