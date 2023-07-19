@@ -13,7 +13,6 @@ import OneProperty from "./components/OneProperty";
 import AllProperties from "./components/AllProperties";
 import RealEstateAgentProperties from "./components/RealEstateAgentProperties";
 import Chatbot from "./components/ChatBot";
-import UploadWidget from "./components/UploadWidget";
 
 function App() {
   return (
