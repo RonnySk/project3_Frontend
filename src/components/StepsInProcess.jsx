@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Step1Component from "./Step1Component";
 import Step2Component from "./Step2Component";
+import Step3Component from "./Step3Component";
 import StepsList from "./StepsList";
 import TasksList from "./TaskList";
 import Popup from "./PopUp";
@@ -48,6 +49,7 @@ function StepsInProcess() {
   const stepComponents = {
     1: Step1Component,
     2: Step2Component,
+    3: Step3Component,
     // Add other step components here...
   };
 
