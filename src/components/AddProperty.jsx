@@ -19,7 +19,6 @@ function AddProperty() {
   const [description, setDescription] = useState("");
   const [file, setFile] = useState(null);
   const [imgUrl, setImgUrl] = useState([]);
-  // const [loading, setLoading] = useState(false);
 
   const { user } = useContext(AuthContext);
   const [userId, setUserId] = useState(user && user._id);
@@ -44,6 +43,7 @@ function AddProperty() {
   const handleGarage = (e) => setGarage(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
   const handleSelectFile = (e) => setFile(e.target.files[0]);
+
   const handleUpload = async () => {
     try {
       const data = new FormData();
@@ -60,28 +60,6 @@ function AddProperty() {
 
   const handleAddPropertySubmit = async (e) => {
     e.preventDefault();
-
-    // if (!userId) {
-    //   alert("You need to be logged in to add a property!");
-    //   return;
-    // }
-
-    // if (file) {
-    //   try {
-    //     const data = new FormData();
-    //     data.append("my_file", file);
-    //     const res = await axios.post(`${API_URL}/property/upload`, data);
-
-    //     if (res.data.secure_url) {
-    //       setImgUrl(res.data.secure_url);
-    //     } else {
-    //       console.log("Upload response does not contain secure_url", res.data);
-    //     }
-    //   } catch (error) {
-    //     alert(error.message);
-    //     return;
-    //   }
-    // }
 
     const requestBody = {
       title,
@@ -125,25 +103,23 @@ function AddProperty() {
           multiple={false}
         />
         <button onClick={handleUpload} className="auth-btn">
-          Add img
+          Add image
         </button>
-        {/* {imgUrl.map((oneImg, index) => {
-          return <img key={index} src={imgUrl} alt="property"></img>;
-        })} */}
-        {/* {imgUrl && <img src={imgUrl} alt="property"></img>} */}
+
+        {imgUrl.map((oneImgUrl, index) => (
+          <div key={oneImgUrl}>
+            <img src={oneImgUrl} alt="property"></img>
+            <button
+              onClick={() => {
+                setImgUrl(imgUrl.filter((a) => a !== oneImgUrl));
+              }}
+            >
+              Delete image
+            </button>
+          </div>
+        ))}
 
         <form onSubmit={handleAddPropertySubmit} className="auth-form">
-          <label>Add photos:</label>
-          <input
-            type="file"
-            id="file"
-            className="auth-input"
-            onChange={handleSelectFile}
-            multiple={false}
-          />
-
-          {imgUrl && <img src={imgUrl} alt="property"></img>}
-
           <label>Title:</label>
           <input
             type="text"
