@@ -16,7 +16,7 @@ function OneProperty() {
       .then((response) => {
         const { oneProperty } = response.data;
         setProperty(oneProperty);
-        console.log(" one propertie", oneProperty);
+        console.log(" one property", oneProperty);
       })
       .catch((error) => console.log(error));
   };
@@ -42,7 +42,8 @@ function OneProperty() {
     return (
       <div className="card-property">
         <p>{property.title}</p>
-        <p>{property.pice}</p>
+        <img src={property.imgUrl} alt={property.title} /> {/* Image element added here */}
+        <p>{property.price}</p>
         <p>{property.type}</p>
         <p>{property.size}</p>
         <p>{property.room}</p>
@@ -60,11 +61,7 @@ function OneProperty() {
               Update
             </button>
 
-            <button
-              type="submit"
-              className="calculator-button"
-              onClick={handleDelete}
-            >
+            <button type="submit" className="calculator-button" onClick={handleDelete}>
               Delete
             </button>
           </div>
