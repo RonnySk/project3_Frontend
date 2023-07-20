@@ -18,7 +18,7 @@ function AddProperty() {
   const [description, setDescription] = useState("");
 
   const [file, setFile] = useState(null);
-  const [imgUrl, setImgUrl] = useState("");
+  const [imgUrl, setImgUrl] = useState([]);
   // const [loading, setLoading] = useState(false);
 
   const { user } = useContext(AuthContext);
@@ -39,19 +39,19 @@ function AddProperty() {
   const handleGarage = (e) => setGarage(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
   const handleSelectFile = (e) => setFile(e.target.files[0]);
-
   const handleUpload = async () => {
     try {
       const data = new FormData();
       data.append("my_file", file);
       const res = await axios.post(`${API_URL}/property/upload`, data);
-      setImgUrl(res.data.url);
-      console.log("response api", res.data.url);
+
+      setImgUrl([...imgUrl, res.data.url]);
+      console.log("imgArr response api", imgUrl);
     } catch (error) {
       alert(error.message);
     }
   };
-
+  console.log("imgArr response api", imgUrl);
   const handleAddPropertySubmit = (e) => {
     e.preventDefault();
     const requestBody = {
@@ -98,8 +98,10 @@ function AddProperty() {
         <button onClick={handleUpload} className="auth-btn">
           Add img
         </button>
-
-        {imgUrl && <img src={imgUrl} alt="property"></img>}
+        {/* {imgUrl.map((oneImg, index) => {
+          return <img key={index} src={imgUrl} alt="property"></img>;
+        })} */}
+        {/* {imgUrl && <img src={imgUrl} alt="property"></img>} */}
 
         <form onSubmit={handleAddPropertySubmit} className="auth-form">
           <label>Title:</label>
