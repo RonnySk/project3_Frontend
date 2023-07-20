@@ -44,6 +44,7 @@ function AddProperty() {
   const handleGarage = (e) => setGarage(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
   const handleSelectFile = (e) => setFile(e.target.files[0]);
+
   const handleUpload = async () => {
     try {
       const data = new FormData();
@@ -127,23 +128,12 @@ function AddProperty() {
         <button onClick={handleUpload} className="auth-btn">
           Add img
         </button>
-        {/* {imgUrl.map((oneImg, index) => {
-          return <img key={index} src={imgUrl} alt="property"></img>;
-        })} */}
+        {imgUrl.map((oneImgUrl, index) => {
+          return <img key={index} src={oneImgUrl} alt="property"></img>;
+        })}
         {/* {imgUrl && <img src={imgUrl} alt="property"></img>} */}
 
         <form onSubmit={handleAddPropertySubmit} className="auth-form">
-          <label>Add photos:</label>
-          <input
-            type="file"
-            id="file"
-            className="auth-input"
-            onChange={handleSelectFile}
-            multiple={false}
-          />
-
-          {imgUrl && <img src={imgUrl} alt="property"></img>}
-
           <label>Title:</label>
           <input
             type="text"
