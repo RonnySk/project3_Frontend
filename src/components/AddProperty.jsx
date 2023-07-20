@@ -19,7 +19,6 @@ function AddProperty() {
   const [description, setDescription] = useState("");
   const [file, setFile] = useState(null);
   const [imgUrl, setImgUrl] = useState([]);
-  // const [loading, setLoading] = useState(false);
 
   const { user } = useContext(AuthContext);
   const [userId, setUserId] = useState(user && user._id);
