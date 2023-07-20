@@ -1,8 +1,9 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../config/config.index";
+import "../css/AddProperty.css";
 
 function AddProperty() {
   const [title, setTitle] = useState("");
@@ -16,14 +17,17 @@ function AddProperty() {
   const [year, setYear] = useState("");
   const [garage, setGarage] = useState("");
   const [description, setDescription] = useState("");
-
   const [file, setFile] = useState(null);
   const [imgUrl, setImgUrl] = useState("");
-  // const [loading, setLoading] = useState(false);
 
   const { user } = useContext(AuthContext);
+  const [userId, setUserId] = useState(user && user._id);
 
-  const [userId, setUserId] = useState(user._id);
+  useEffect(() => {
+    if (user) {
+      setUserId(user._id);
+    }
+  }, [user]);
 
   const navigate = useNavigate();
 
@@ -40,20 +44,31 @@ function AddProperty() {
   const handleDescription = (e) => setDescription(e.target.value);
   const handleSelectFile = (e) => setFile(e.target.files[0]);
 
-  const handleUpload = async () => {
-    try {
-      const data = new FormData();
-      data.append("my_file", file);
-      const res = await axios.post(`${API_URL}/property/upload`, data);
-      setImgUrl(res.data.url);
-      console.log("response api", res.data.url);
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
-  const handleAddPropertySubmit = (e) => {
+  const handleAddPropertySubmit = async (e) => {
     e.preventDefault();
+
+    if (!userId) {
+      alert("You need to be logged in to add a property!");
+      return;
+    }
+
+    if (file) {
+      try {
+        const data = new FormData();
+        data.append("my_file", file);
+        const res = await axios.post(`${API_URL}/property/upload`, data);
+
+        if (res.data.secure_url) {
+          setImgUrl(res.data.secure_url);
+        } else {
+          console.log("Upload response does not contain secure_url", res.data);
+        }
+      } catch (error) {
+        alert(error.message);
+        return;
+      }
+    }
+
     const requestBody = {
       title,
       street,
@@ -87,109 +102,44 @@ function AddProperty() {
       <div className="auth-container">
         <h1 className="auth-header">Add property</h1>
 
-        <label>Add fotos:</label>
-        <input
-          type="file"
-          id="file"
-          className="auth-input"
-          onChange={handleSelectFile}
-          multiple={false}
-        />
-        <button onClick={handleUpload} className="auth-btn">
-          Add img
-        </button>
-
-        {imgUrl && <img src={imgUrl} alt="property"></img>}
-
         <form onSubmit={handleAddPropertySubmit} className="auth-form">
+          <label>Add photos:</label>
+          <input type="file" id="file" className="auth-input" onChange={handleSelectFile} multiple={false} />
+
+          {imgUrl && <img src={imgUrl} alt="property"></img>}
+
           <label>Title:</label>
-          <input
-            type="text"
-            name="title"
-            value={title}
-            onChange={handleTitle}
-            className="auth-input"
-          />
-          <label>Price:</label>
-          <input
-            type="number"
-            name="price"
-            value={price}
-            onChange={handlePrice}
-            className="auth-input"
-          />
+          <input type="text" name="title" value={title} onChange={handleTitle} className="auth-input" />
+
           <label>Street:</label>
-          <input
-            type="text"
-            name="street"
-            value={street}
-            onChange={handleStreet}
-            className="auth-input"
-          />
-          <label>Property number:</label>
-          <input
-            type="number"
-            name="propertyNumber"
-            value={propertyNumber}
-            onChange={handlePropertyNumber}
-            className="auth-input"
-          />
+          <input type="text" name="street" value={street} onChange={handleStreet} className="auth-input" />
+
+          <label>Property Number:</label>
+          <input type="number" name="propertyNumber" value={propertyNumber} onChange={handlePropertyNumber} className="auth-input" />
+
+          <label>Price:</label>
+          <input type="number" name="price" value={price} onChange={handlePrice} className="auth-input" />
+
           <label>Type:</label>
-          <input
-            type="text"
-            name="type"
-            value={type}
-            onChange={handleType}
-            className="auth-input"
-          />
+          <input type="text" name="type" value={type} onChange={handleType} className="auth-input" />
+
           <label>Size:</label>
-          <input
-            type="number"
-            name="size"
-            value={size}
-            onChange={handleSize}
-            className="auth-input"
-          />
+          <input type="number" name="size" value={size} onChange={handleSize} className="auth-input" />
+
           <label>Room:</label>
-          <input
-            type="number"
-            name="room"
-            value={room}
-            onChange={handleRoom}
-            className="auth-input"
-          />
+          <input type="number" name="room" value={room} onChange={handleRoom} className="auth-input" />
+
           <label>Bathroom:</label>
-          <input
-            type="number"
-            name="bathroom"
-            value={bathroom}
-            onChange={handleBathroom}
-            className="auth-input"
-          />
+          <input type="number" name="bathroom" value={bathroom} onChange={handleBathroom} className="auth-input" />
+
           <label>Year:</label>
-          <input
-            type="number"
-            name="year"
-            value={year}
-            onChange={handleYear}
-            className="auth-input"
-          />
+          <input type="number" name="year" value={year} onChange={handleYear} className="auth-input" />
+
           <label>Garage:</label>
-          <input
-            type="number"
-            name="garage"
-            value={garage}
-            onChange={handleGarage}
-            className="auth-input"
-          />
+          <input type="number" name="garage" value={garage} onChange={handleGarage} className="auth-input" />
+
           <label>Description:</label>
-          <input
-            type="text"
-            name="description"
-            value={description}
-            onChange={handleDescription}
-            className="auth-input"
-          />
+          <textarea name="description" value={description} onChange={handleDescription} className="auth-input" />
 
           <button type="submit" className="auth-btn">
             Add property
