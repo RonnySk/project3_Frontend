@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Step1Component from "./Step1Component";
 import Step2Component from "./Step2Component";
 import Step3Component from "./Step3Component";
@@ -9,15 +9,26 @@ import "../css/StepsInProcess.css";
 import Chatbot from "./ChatBot";
 
 function StepsInProcess() {
-  const [step, setStep] = useState(1);
-  const [checklist, setChecklist] = useState({
-    1: { task1: false, task2: false, task3: false },
-    2: { task1: false, task2: false, task3: false },
-    3: { task1: false, task2: false, task3: false },
-    4: { task1: false, task2: false, task3: false },
-    5: { task1: false, task2: false, task3: false },
-  });
+  const initialStep = parseInt(localStorage.getItem("currentStep")) || 1;
+  const [step, setStep] = useState(initialStep);
+  const [checklist, setChecklist] = useState(
+    JSON.parse(localStorage.getItem("checklist")) || {
+      1: { task1: false, task2: false, task3: false },
+      2: { task1: false, task2: false, task3: false },
+      3: { task1: false, task2: false, task3: false },
+      4: { task1: false, task2: false, task3: false },
+      5: { task1: false, task2: false, task3: false },
+    }
+  );
   const [popupText, setPopupText] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("currentStep", step);
+  }, [step]);
+
+  useEffect(() => {
+    localStorage.setItem("checklist", JSON.stringify(checklist));
+  }, [checklist]);
 
   const nextStep = () => {
     if (step < 5) {

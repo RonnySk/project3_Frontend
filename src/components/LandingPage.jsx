@@ -15,16 +15,9 @@ function LandingPage() {
             <Link to="/steps" className="cta-button">
               Get Started
             </Link>
-
           </div>
           <div className="image">
             <img src={Dreamhouse} alt="Dream house" />
-          </div>
-        </section>
-
-        <section className="section2">
-          <div className="carousel-placeholder">
-            <p>Carousel goes here</p>
           </div>
         </section>
 
