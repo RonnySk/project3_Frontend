@@ -13,6 +13,8 @@ import OneProperty from "./components/OneProperty";
 import AllProperties from "./components/AllProperties";
 import RealEstateAgentProperties from "./components/RealEstateAgentProperties";
 import Chatbot from "./components/ChatBot";
+import CreateMessenger from "./components/messenger/CreateMessenger";
+import Messenger from "./components/messenger/Messenger";
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
             element={<AllProperties />}
           />
           <Route path="/steps" element={<Chatbot />} />
+          <Route path="/createmessenger" element={<CreateMessenger />} />
+          <Route path="/messenger/:messenger_id" element={<Messenger />} />
 
           <Route path="*" element={<ErrorPage />} />
         </Routes>

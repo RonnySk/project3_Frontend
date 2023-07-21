@@ -21,6 +21,8 @@ function RealEstateAgentProperties() {
     getRealEstateAllProperties();
   }, []);
 
+  console.log("params reals estate", agent_id);
+
   if (!realEstateProperties) {
     return <p>Loading ...</p>;
   } else {

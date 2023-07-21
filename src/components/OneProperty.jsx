@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { API_URL } from "../config/config.index";
 import { AuthContext } from "../context/auth.context";
 import "../css/PropertiesCard.css";
+import PropertyCard from "./PropertyCard";
 
 function OneProperty() {
   const { user } = useContext(AuthContext);
@@ -41,28 +42,24 @@ function OneProperty() {
     return <p>Loading ...</p>;
   } else {
     return (
-      <div className="card-property">
-        <p>{property.title}</p>
-        <img src={property.imgUrl} alt={property.title} /> {/* Image element added here */}
-        <p>{property.price}</p>
-        <p>{property.type}</p>
-        <p>{property.size}</p>
-        <p>{property.room}</p>
-        <p>{property.bathroom}</p>
-        <p>{property.year}</p>
-        <p>{property.garage}</p>
-        <p>{property.description}</p>
+      <div className="property-card">
+        <PropertyCard property={property} />
+
         {user.isAgent && (
           <div>
             <button
               type="submit"
               className="calculator-button"
-              // onClick={handleDelete}
+              // onClick={handleUpdate}
             >
               Update
             </button>
 
-            <button type="submit" className="calculator-button" onClick={handleDelete}>
+            <button
+              type="submit"
+              className="calculator-button"
+              onClick={handleDelete}
+            >
               Delete
             </button>
           </div>
