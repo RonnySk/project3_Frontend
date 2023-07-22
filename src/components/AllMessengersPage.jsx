@@ -12,21 +12,21 @@ function AllMessengersPage() {
 
   console.log("userId", user_id);
 
-  // const getAllMessengers = () => {
-  //   const requestBody = {
-  //     user_id,
-  //   };
-  //   axios
-  //     .get(`${API_URL}/messenger/allmessenger/${user_id}`, requestBody)
-  //     .then((response) => {
-  //       setAllMessenger(response.data);
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
+  const getAllMessengers = () => {
+    const requestBody = {
+      user_id,
+    };
+    axios
+      .get(`${API_URL}/messenger/allmessenger/${user_id}`, requestBody)
+      .then((response) => {
+        setAllMessenger(response.data);
+      })
+      .catch((error) => console.log(error));
+  };
 
-  // useEffect(() => {
-  //   getAllMessengers();
-  // }, []);
+  useEffect(() => {
+    getAllMessengers();
+  }, []);
 
   console.log("all messengers", allmessenger);
 
