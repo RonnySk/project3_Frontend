@@ -13,7 +13,7 @@ function Messenger() {
 
   const getAllMessages = () => {
     axios
-      .get(`${API_URL}/messenger/message/${messengerId}`, messengerId)
+      .get(`${API_URL}/messenger/message/${messengerId}`)
       .then((response) => {
         console.log("all msgs", response.data);
       })
@@ -25,6 +25,7 @@ function Messenger() {
   }, []);
 
   console.log("messengerId", messengerId);
+
   const handleMessage = (e) => setMessage(e.target.value);
 
   const handleAddMessageSubmit = async (e) => {
