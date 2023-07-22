@@ -12,29 +12,37 @@ function AllMessengersPage() {
 
   console.log("userId", user_id);
 
-  const getAllMessengers = () => {
-    const requestBody = {
-      user_id,
-    };
-    axios
-      .get(`${API_URL}/messenger/allmessenger/${user_id}`, requestBody)
-      .then((response) => {
-        setAllMessenger(response.data);
-      })
-      .catch((error) => console.log(error));
-  };
+  // const getAllMessengers = () => {
+  //   const requestBody = {
+  //     user_id,
+  //   };
+  //   axios
+  //     .get(`${API_URL}/messenger/allmessenger/${user_id}`, requestBody)
+  //     .then((response) => {
+  //       setAllMessenger(response.data);
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
 
-  useEffect(() => {
-    getAllMessengers();
-  }, []);
+  // useEffect(() => {
+  //   getAllMessengers();
+  // }, []);
 
   console.log("all messengers", allmessenger);
 
   return (
     <div>
       <h1>Your Messages, {user.name}</h1>
-      {allmessenger === 0 ? (
-        <p>You don´t have any Messages</p>
+
+      {allmessenger.length === 0 ? (
+        <div>
+          <p>You don't have any Messages</p>
+          {user.isAgent ? (
+            <Link to="/realEstateHome">Back to home</Link>
+          ) : (
+            <Link to="/home">Back to home</Link>
+          )}
+        </div>
       ) : (
         allmessenger.map((oneMessenger, index) => {
           return (
