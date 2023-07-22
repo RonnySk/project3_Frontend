@@ -15,6 +15,7 @@ import RealEstateAgentProperties from "./components/RealEstateAgentProperties";
 import Chatbot from "./components/ChatBot";
 import CreateMessenger from "./components/messenger/CreateMessenger";
 import Messenger from "./components/messenger/Messenger";
+import AllMessengersPage from "./components/AllMessengersPage";
 
 function App() {
   return (
@@ -42,6 +43,10 @@ function App() {
           <Route path="/steps" element={<Chatbot />} />
           <Route path="/createmessenger" element={<CreateMessenger />} />
           <Route path="/messenger/:messenger_id" element={<Messenger />} />
+          <Route
+            path="/allmessenger/:user_id"
+            element={<AllMessengersPage />}
+          />
 
           <Route path="*" element={<ErrorPage />} />
         </Routes>

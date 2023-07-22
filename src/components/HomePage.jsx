@@ -28,7 +28,9 @@ function HomePage() {
                 <img src={stepsicon} alt="Steps Icon" />
               </div>
               <h2 className="column-title">Go to the Steps</h2>
-              <p className="column-description">Simplify your homebuying journey with our step-by-step guide.</p>
+              <p className="column-description">
+                Simplify your homebuying journey with our step-by-step guide.
+              </p>
               <Link to="/steps" className="cta-button">
                 Explore
               </Link>
@@ -40,8 +42,11 @@ function HomePage() {
                 <img src={messages} alt="Messages Icon" />
               </div>
               <h2 className="column-title">Go to the Messages</h2>
-              <p className="column-description">Stay connected and communicate with your real estate agent effortlessly.</p>
-              <Link to="/messages" className="cta-button">
+              <p className="column-description">
+                Stay connected and communicate with your real estate agent
+                effortlessly.
+              </p>
+              <Link to={`/allmessenger/${user._id}`} className="cta-button">
                 Access
               </Link>
             </div>

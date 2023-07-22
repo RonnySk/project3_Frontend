@@ -15,6 +15,7 @@ function RealEstateHome() {
         <Link to={`/realestateallproperties/${user._id}`}>
           See your properties
         </Link>
+        <Link to={`/allmessenger/${user._id}`}>Go to the Messages</Link>
       </div>
     );
   }
