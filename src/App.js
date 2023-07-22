@@ -15,7 +15,7 @@ import RealEstateAgentProperties from "./components/RealEstateAgentProperties";
 import Chatbot from "./components/ChatBot";
 import CreateMessenger from "./components/messenger/CreateMessenger";
 import Messenger from "./components/messenger/Messenger";
-import AllMessengersPage from "./components/AllMessengersPage";
+import AllMessengersPage from "./components/messenger/AllMessengersPage";
 
 function App() {
   return (

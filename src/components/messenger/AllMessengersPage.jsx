@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { API_URL } from "../config/config.index";
-import { AuthContext } from "../context/auth.context";
+import { API_URL } from "../../config/config.index";
+import { AuthContext } from "../../context/auth.context";
+import "../../css/AllMessagesPage.css";
 
 function AllMessengersPage() {
   const { user } = useContext(AuthContext);
@@ -31,30 +32,36 @@ function AllMessengersPage() {
   console.log("all messengers", allmessenger);
 
   return (
-    <div>
-      <h1>Your Messages, {user.name}</h1>
+    <div className="allMessengers-container">
+      <h1>Messages</h1>
 
       {allmessenger.length === 0 ? (
-        <div>
+        <div className="noMessage-container">
           <p>You don't have any Messages</p>
           {user.isAgent ? (
-            <Link to="/realEstateHome">Back to home</Link>
+            <Link className="noMessage-container-link" to="/realEstateHome">
+              Back to home
+            </Link>
           ) : (
-            <Link to="/home">Back to home</Link>
+            <Link className="noMessage-container-link" to="/home">
+              Back to home
+            </Link>
           )}
         </div>
       ) : (
         allmessenger.map((oneMessenger, index) => {
           return (
-            <div key={index}>
-              <ul>
-                <li>
-                  <p>{oneMessenger.userId.name}</p>
-                  <Link to={`/messenger/${oneMessenger._id}`}>
-                    Open the messages
-                  </Link>
-                </li>
-              </ul>
+            <div className="messenger-card-container" key={index}>
+              <img src={oneMessenger.propertyId.imgUrl[0]} alt="house"></img>
+              <div className="messenger-card-info">
+                <h2>{oneMessenger.propertyId.title}</h2>
+                <Link
+                  className="openMessenger-link"
+                  to={`/messenger/${oneMessenger._id}`}
+                >
+                  Open the Messages
+                </Link>
+              </div>
             </div>
           );
         })

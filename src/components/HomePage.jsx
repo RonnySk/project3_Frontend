@@ -14,7 +14,6 @@ function HomePage() {
   } else {
     return (
       <div className="home-page">
-        \
         <section className="hero">
           <div className="hero-content">
             <h1 className="hero-title">Welcome, {user.name}!</h1>
