@@ -11,6 +11,7 @@ function Messenger() {
   const [message, setMessage] = useState("");
   const { messenger_id } = useParams();
   const [inbox, setInbox] = useState([]);
+  const [property, setProperty] = useState([]);
 
   const getAllMessages = async () => {
     try {
@@ -19,13 +20,12 @@ function Messenger() {
       );
 
       const { messages } = data;
-      // const allMessages = messages.map((oneMessage) => {
-      //   return oneMessage.message;
-      // });
+      const { propertyId } = data;
 
+      setProperty(propertyId);
       setInbox(messages);
 
-      console.log("all data msgs", messages);
+      console.log("propertyId", propertyId);
     } catch (error) {
       console.log(error);
     }
@@ -59,51 +59,61 @@ function Messenger() {
   };
 
   return (
-    <div>
-      <h1>Messenger</h1>
+    <div className="messenger-bcg">
+      <div className="messenger-container">
+        {property && (
+          <div className="property-chat-container">
+            <img src={property.imgUrl} alt="house"></img>
+            <div className="property-chat-info">
+              <h3>{property.title}</h3>
+              <p>Street: {property.street}</p>
+              <p>Price: {property.price}</p>
+            </div>
+          </div>
+        )}
+        <div className="inbox">
+          {inbox &&
+            inbox.map((oneMessage, index) => {
+              return (
+                <div key={index}>
+                  {!oneMessage.sender.isAgent ? (
+                    <div className="left-side">
+                      <p>{oneMessage.message}</p>
+                      <p>{oneMessage.sender.name}</p>
+                      <small>
+                        {oneMessage.created_at.slice(0, 10)}{" "}
+                        {oneMessage.created_at.slice(11, 16)}
+                      </small>
+                    </div>
+                  ) : (
+                    <div className="right-side">
+                      <p>{oneMessage.message}</p>
+                      <p>{oneMessage.sender.name}</p>
+                      <small>
+                        {oneMessage.created_at.slice(0, 10)}{" "}
+                        {oneMessage.created_at.slice(11, 16)}
+                      </small>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+        </div>
+        <form onSubmit={handleAddMessageSubmit}>
+          <input
+            type="text"
+            name="message"
+            placeholder="Type your message"
+            value={message}
+            onChange={handleMessage}
+            className="messenger-input"
+          />
 
-      <div className="inbox">
-        {inbox &&
-          inbox.map((oneMessage, index) => {
-            return (
-              <div key={index}>
-                {!oneMessage.sender.isAgent ? (
-                  <div className="left-side">
-                    <p>{oneMessage.message}</p>
-                    <p>{oneMessage.sender.name}</p>
-                    <small>
-                      {oneMessage.created_at.slice(0, 10)}{" "}
-                      {oneMessage.created_at.slice(11, 16)}
-                    </small>
-                  </div>
-                ) : (
-                  <div className="right-side">
-                    <p>{oneMessage.message}</p>
-                    <p>{oneMessage.sender.name}</p>
-                    <small>
-                      {oneMessage.created_at.slice(0, 10)}{" "}
-                      {oneMessage.created_at.slice(11, 16)}
-                    </small>
-                  </div>
-                )}
-              </div>
-            );
-          })}
+          <button type="submit" className="auth-btn">
+            Send
+          </button>
+        </form>
       </div>
-      <form onSubmit={handleAddMessageSubmit} className="auth-form">
-        <input
-          type="text"
-          name="message"
-          placeholder="Type your message"
-          value={message}
-          onChange={handleMessage}
-          className="auth-input"
-        />
-
-        <button type="submit" className="auth-btn">
-          Send
-        </button>
-      </form>
     </div>
   );
 }
