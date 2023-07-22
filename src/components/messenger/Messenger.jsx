@@ -62,23 +62,6 @@ function Messenger() {
     <div>
       <h1>Messenger</h1>
 
-      {/* <div className="chat">
-              {conversation.map((message, i) => {
-                return (
-                  <div key={message._id + i}>
-                    {message.sender !== this.state.activeUser._id ? (
-                      <div className="leftSide">
-                        <p>{message.message_body}</p>
-                        <small>{message.created_at.slice(11, 16)}</small>
-                      </div>
-                    ) : (
-                      <div className="rightSide">
-                        <p>{message.message_body}</p>
-                        <small>{message.created_at.slice(11, 16)}</small>
-                      </div>
-                    )}
-                  </div> */}
-
       <div className="inbox">
         {inbox &&
           inbox.map((oneMessage, index) => {

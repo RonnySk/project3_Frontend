@@ -33,7 +33,9 @@ function AllMessengersPage() {
   return (
     <div>
       <h1>Your Messages, {user.name}</h1>
-      {allmessenger &&
+      {allmessenger === 0 ? (
+        <p>You don´t have any Messages</p>
+      ) : (
         allmessenger.map((oneMessenger, index) => {
           return (
             <div key={index}>
@@ -47,7 +49,8 @@ function AllMessengersPage() {
               </ul>
             </div>
           );
-        })}
+        })
+      )}
     </div>
   );
 }
