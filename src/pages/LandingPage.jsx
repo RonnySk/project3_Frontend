@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
 import Dreamhouse from "../images/travel-cents-WYLuNY5JG4E-unsplash.jpg";
-import Comparison from "./Comparison";
+import Comparison from "../components/Comparison";
 
 function LandingPage() {
   return (
@@ -11,7 +11,10 @@ function LandingPage() {
         <section className="section1">
           <div className="text">
             <h1>Get Your Dream House Now</h1>
-            <p>We simplify the home-buying process. Discover, tour, and buy your dream house with us.</p>
+            <p>
+              We simplify the home-buying process. Discover, tour, and buy your
+              dream house with us.
+            </p>
             <Link to="/steps" className="cta-button">
               Get Started
             </Link>

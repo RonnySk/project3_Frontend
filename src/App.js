@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom";
-import HomePage from "./components/HomePage";
-import LoginPage from "./components/LoginPage";
-import SignupPage from "./components/SignupPage";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
 import ErrorPage from "../src/pages/ErrorPage.jsx";
 import StepsInProcess from "./components/StepsInProcess";
 import NavBar from "./components/NavBar";
-import LandingPage from "./components/LandingPage";
-import RealEstateHome from "./components/RealEstateHome";
+import LandingPage from "./pages/LandingPage.jsx";
+import RealEstateHome from "./pages/RealEstateHome";
 import Calculator from "./components/Calculator";
 import AddProperty from "./components/AddProperty";
 import OneProperty from "./components/OneProperty";
