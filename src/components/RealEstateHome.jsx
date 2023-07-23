@@ -10,7 +10,7 @@ function RealEstateHome() {
   } else {
     return (
       <div>
-        <h1>RealEstateHome teste {user.name}</h1>
+        <h1>Welcome {user.name}</h1>
         <Link to="/addProperty">Add new Property</Link>
         <Link to={`/realestateallproperties/${user._id}`}>
           See your properties

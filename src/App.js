@@ -10,7 +10,6 @@ import RealEstateHome from "./components/RealEstateHome";
 import Calculator from "./components/Calculator";
 import AddProperty from "./components/AddProperty";
 import OneProperty from "./components/OneProperty";
-import AllProperties from "./components/AllProperties";
 import RealEstateAgentProperties from "./components/RealEstateAgentProperties";
 import Chatbot from "./components/ChatBot";
 import CreateMessenger from "./components/messenger/CreateMessenger";
@@ -36,10 +35,6 @@ function App() {
           <Route path="/steps" element={<StepsInProcess />} />
           <Route path="/addProperty" element={<AddProperty />} />
           <Route path="/oneproperty/:property_id" element={<OneProperty />} />
-          <Route
-            path="/oneproperty/allProperties"
-            element={<AllProperties />}
-          />
           <Route path="/steps" element={<Chatbot />} />
           <Route path="/createmessenger" element={<CreateMessenger />} />
           <Route path="/messenger/:messenger_id" element={<Messenger />} />
