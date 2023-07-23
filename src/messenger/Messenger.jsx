@@ -35,7 +35,7 @@ function Messenger() {
     getAllMessages();
   }, []);
 
-  console.log("inbox before nem message", inbox);
+  console.log("property", property);
 
   const handleMessage = (e) => setMessage(e.target.value);
 
@@ -64,9 +64,11 @@ function Messenger() {
         <Link to={`/allmessenger/${user._id}`} className="back-button">
           Back to Messages
         </Link>
-        {property && (
+        {property.length === 0 ? (
+          <p>loading property details</p>
+        ) : (
           <div className="property-chat-container">
-            <img src={property.imgUrl} alt="house"></img>
+            <img src={property.imgUrl[0]} alt="house"></img>
             <div className="property-chat-info">
               <h3>{property.title}</h3>
               <p>
