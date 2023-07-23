@@ -8,6 +8,8 @@ import { AuthContext } from "../context/auth.context";
 function NavBar() {
   const { isLoggedIn, logOutUser, user } = useContext(AuthContext);
 
+  console.log("user ate home", user);
+
   return (
     <nav className="navbar">
       <Link to="/">
@@ -44,14 +46,15 @@ function NavBar() {
                 Home
               </Link>
             ) : (
-              <Link to="/home" className="nav-link">
-                Home
-              </Link>
+              <div>
+                <Link to="/home" className="nav-link">
+                  Home
+                </Link>
+                <Link to="/steps" className="nav-link">
+                  Steps
+                </Link>
+              </div>
             )}
-            <Link to="/steps" className="nav-link">
-              Steps
-            </Link>
-
             <button onClick={logOutUser}>Logout</button>
           </li>
         </ul>

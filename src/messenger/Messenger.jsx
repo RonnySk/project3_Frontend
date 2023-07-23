@@ -77,7 +77,12 @@ function Messenger() {
               <p>
                 <span>Price:</span> €{property.price}
               </p>
-              <Link to={`/oneproperty/${property._id}`}>Property Details</Link>
+              <Link
+                className="property-details-btn"
+                to={`/oneproperty/${property._id}`}
+              >
+                Property Details
+              </Link>
             </div>
           </div>
         )}

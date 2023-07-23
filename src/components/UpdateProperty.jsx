@@ -56,8 +56,6 @@ function UpdateProperty() {
     getProperty();
   }, []);
 
-  console.log("descrpition after useeefect", description);
-
   const handleTitle = (e) => setTitle(e.target.value);
   const handleStreet = (e) => setStreet(e.target.value);
   const handlePropertyNumber = (e) => setPropertyNumber(e.target.value);
@@ -111,6 +109,7 @@ function UpdateProperty() {
       );
       console.log("data after update", updateProperty);
       navigate(`/oneproperty/${property_id}`);
+      alert("Property updated successfully!");
     } catch (error) {
       alert(error.message);
     }

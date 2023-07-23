@@ -12,30 +12,35 @@ function OneProperty() {
   const { property_id } = useParams();
   const navigate = useNavigate();
 
-  const getProperty = () => {
-    axios
-      .get(`${API_URL}/property/oneproperty/${property_id}`, property_id)
-      .then((response) => {
-        const { oneProperty } = response.data;
-        setProperty(oneProperty);
-        console.log(" one property", oneProperty);
-      })
-      .catch((error) => console.log(error));
+  const getProperty = async () => {
+    try {
+      const { data } = await axios.get(
+        `${API_URL}/property/oneproperty/${property_id}`
+      );
+      const { oneProperty } = data;
+      setProperty(oneProperty);
+
+      console.log("one Property", oneProperty);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
     getProperty();
   }, []);
 
-  const handleDelete = () => {
-    axios
-      .delete(`${API_URL}/property/${property_id}`, property_id)
-      .then((response) => {
-        navigate(`/realestateallproperties/${user._id}`);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const handleDelete = async () => {
+    try {
+      alert("Property removed successfully!");
+      const { data } = await axios.delete(
+        `${API_URL}/property/${property_id}`,
+        property_id
+      );
+      navigate(`/realestateallproperties/${user._id}`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   if (!property) {
@@ -60,6 +65,12 @@ function OneProperty() {
             >
               Delete
             </button>
+            <Link
+              to={`/realestateallproperties/${user._id}`}
+              className="cta-button"
+            >
+              Back to your properties
+            </Link>
           </div>
         )}
       </div>
