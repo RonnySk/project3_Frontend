@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
-import ErrorPage from "./components/ErrorPage";
+import ErrorPage from "../src/pages/ErrorPage.jsx";
 import StepsInProcess from "./components/StepsInProcess";
 import NavBar from "./components/NavBar";
 import LandingPage from "./components/LandingPage";
@@ -12,9 +12,9 @@ import AddProperty from "./components/AddProperty";
 import OneProperty from "./components/OneProperty";
 import RealEstateAgentProperties from "./components/RealEstateAgentProperties";
 import Chatbot from "./components/ChatBot";
-import CreateMessenger from "./components/messenger/CreateMessenger";
-import Messenger from "./components/messenger/Messenger";
-import AllMessengersPage from "./components/messenger/AllMessengersPage";
+import CreateMessenger from "../src/messenger/CreateMessenger";
+import Messenger from "../src/messenger/Messenger";
+import AllMessengersPage from "../src/messenger/AllMessengersPage";
 
 function App() {
   return (

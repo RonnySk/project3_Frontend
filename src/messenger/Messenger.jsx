@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { API_URL } from "../../config/config.index";
-import { AuthContext } from "../../context/auth.context";
-import "../../css/Messenger.css";
+import { API_URL } from "../config/config.index";
+import { AuthContext } from "../context/auth.context";
+import "../css/Messenger.css";
 
 function Messenger() {
   const { user } = useContext(AuthContext);

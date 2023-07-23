@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { API_URL } from "../../config/config.index";
-import { AuthContext } from "../../context/auth.context";
-import "../../css/CreateMessenger.css";
+import { API_URL } from "../config/config.index";
+import { AuthContext } from "../context/auth.context";
+import "../css/CreateMessenger.css";
 
 function CreateMessenger() {
   const { user } = useContext(AuthContext);
