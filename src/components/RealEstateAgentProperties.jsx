@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { API_URL } from "../config/config.index";
 import "../css/PropertyCard.css";
+import "../css/RealEstateAgentProperties.css";
 
 function RealEstateAgentProperties() {
   const [realEstateProperties, setRealEstateProperties] = useState([]);
@@ -27,23 +28,39 @@ function RealEstateAgentProperties() {
     return <p>Loading ...</p>;
   } else {
     return (
-      <div>
+      <div className="all-properties-container">
         <h1>Your properties</h1>
-        <Link to="/addProperty">Add new Property</Link>
-        {realEstateProperties.map((property) => {
-          return (
-            <li className="card-property" key={property._id}>
-              <ul className="card-property-body">
-                <p>{property.title}</p>
-                <p>{property.price}</p>
-                {console.log("property id", property._id)}
-                <Link to={`/oneproperty/${property._id}`}>
-                  Property Details
-                </Link>
-              </ul>
-            </li>
-          );
-        })}
+        <Link className="add-property-btn" to="/addProperty">
+          Add new Property
+        </Link>
+
+        {realEstateProperties.length === 0 ? (
+          <p>loading properties</p>
+        ) : (
+          realEstateProperties.map((property) => {
+            return (
+              <div className="property-chat-container">
+                <img src={property.imgUrl[0]} alt="house"></img>
+                <div className="property-chat-info">
+                  <h3>{property.title}</h3>
+                  <p>
+                    <span>Street:</span> {property.street}{" "}
+                    {property.propertyNumber}
+                  </p>
+                  <p>
+                    <span>Price:</span> €{property.price}
+                  </p>
+                  <Link
+                    className="property-details-btn"
+                    to={`/oneproperty/${property._id}`}
+                  >
+                    Property Details
+                  </Link>
+                </div>
+              </div>
+            );
+          })
+        )}
       </div>
     );
   }

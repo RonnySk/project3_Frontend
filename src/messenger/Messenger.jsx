@@ -72,7 +72,7 @@ function Messenger() {
             <div className="property-chat-info">
               <h3>{property.title}</h3>
               <p>
-                <span>Street:</span> {property.street}
+                <span>Street:</span> {property.street} {property.propertyNumber}
               </p>
               <p>
                 <span>Price:</span> €{property.price}
