@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { API_URL } from "../config/config.index";
 import { AuthContext } from "../context/auth.context";
-import "../css/PropertiesCard.css";
+import "../css/PropertyCard.css";
 import PropertyCard from "./PropertyCard";
 
 function OneProperty() {
@@ -42,7 +42,7 @@ function OneProperty() {
     return <p>Loading ...</p>;
   } else {
     return (
-      <div className="property-card">
+      <div className="card-property">
         <PropertyCard property={property} />
 
         {user.isAgent && (

@@ -66,40 +66,52 @@ function Messenger() {
             <img src={property.imgUrl} alt="house"></img>
             <div className="property-chat-info">
               <h3>{property.title}</h3>
-              <p>Street: {property.street}</p>
-              <p>Price: {property.price}</p>
+              <p>
+                <span>Street:</span> {property.street}
+              </p>
+              <p>
+                <span>Price:</span> €{property.price}
+              </p>
             </div>
           </div>
         )}
-        <div className="inbox">
+        <div>
           {inbox &&
             inbox.map((oneMessage, index) => {
               return (
                 <div key={index}>
                   {!oneMessage.sender.isAgent ? (
-                    <div className="left-side">
-                      <p>{oneMessage.message}</p>
-                      <p>{oneMessage.sender.name}</p>
-                      <small>
-                        {oneMessage.created_at.slice(0, 10)}{" "}
-                        {oneMessage.created_at.slice(11, 16)}
-                      </small>
+                    <div className="message-container-left">
+                      <div className="left-side-message">
+                        <p>{oneMessage.message}</p>
+                        <p className="message-sender-name">
+                          {oneMessage.sender.name}
+                        </p>
+                        <small className="message-date-left">
+                          {oneMessage.created_at.slice(0, 10)}{" "}
+                          {oneMessage.created_at.slice(11, 16)}
+                        </small>
+                      </div>
                     </div>
                   ) : (
-                    <div className="right-side">
-                      <p>{oneMessage.message}</p>
-                      <p>{oneMessage.sender.name}</p>
-                      <small>
-                        {oneMessage.created_at.slice(0, 10)}{" "}
-                        {oneMessage.created_at.slice(11, 16)}
-                      </small>
+                    <div className="message-container-right">
+                      <div className="right-side-message">
+                        <p>{oneMessage.message}</p>
+                        <p className="message-sender-name">
+                          {oneMessage.sender.name}
+                        </p>
+                        <small className="message-date-right">
+                          {oneMessage.created_at.slice(0, 10)}{" "}
+                          {oneMessage.created_at.slice(11, 16)}
+                        </small>
+                      </div>
                     </div>
                   )}
                 </div>
               );
             })}
         </div>
-        <form onSubmit={handleAddMessageSubmit}>
+        <form className="messenger-form" onSubmit={handleAddMessageSubmit}>
           <input
             type="text"
             name="message"
@@ -109,7 +121,7 @@ function Messenger() {
             className="messenger-input"
           />
 
-          <button type="submit" className="auth-btn">
+          <button type="submit" className="messenger-btn">
             Send
           </button>
         </form>

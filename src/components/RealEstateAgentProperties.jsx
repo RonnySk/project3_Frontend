@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { API_URL } from "../config/config.index";
-import "../css/PropertiesCard.css";
+import "../css/PropertyCard.css";
 
 function RealEstateAgentProperties() {
   const [realEstateProperties, setRealEstateProperties] = useState([]);
