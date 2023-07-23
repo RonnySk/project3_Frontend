@@ -15,6 +15,7 @@ import Chatbot from "./components/ChatBot";
 import CreateMessenger from "../src/messenger/CreateMessenger";
 import Messenger from "../src/messenger/Messenger";
 import AllMessengersPage from "../src/messenger/AllMessengersPage";
+import UpdateProperty from "./components/UpdateProperty";
 
 function App() {
   return (
@@ -34,6 +35,10 @@ function App() {
           <Route path="/calculator" element={<Calculator />} />
           <Route path="/steps" element={<StepsInProcess />} />
           <Route path="/addProperty" element={<AddProperty />} />
+          <Route
+            path="/updateproperty/:property_id"
+            element={<UpdateProperty />}
+          />
           <Route path="/oneproperty/:property_id" element={<OneProperty />} />
           <Route path="/steps" element={<Chatbot />} />
           <Route path="/createmessenger" element={<CreateMessenger />} />

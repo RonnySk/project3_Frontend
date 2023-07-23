@@ -47,14 +47,12 @@ function OneProperty() {
 
         {user.isAgent && (
           <div>
-            <button
-              type="submit"
+            <Link
               className="calculator-button"
-              // onClick={handleUpdate}
+              to={`/updateproperty/${property._id}`}
             >
               Update
-            </button>
-
+            </Link>
             <button
               type="submit"
               className="calculator-button"
