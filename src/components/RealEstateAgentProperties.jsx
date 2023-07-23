@@ -29,6 +29,7 @@ function RealEstateAgentProperties() {
     return (
       <div>
         <h1>Your properties</h1>
+        <Link to="/addProperty">Add new Property</Link>
         {realEstateProperties.map((property) => {
           return (
             <li className="card-property" key={property._id}>

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { API_URL } from "../config/config.index";
 import { AuthContext } from "../context/auth.context";
 import "../css/Messenger.css";
@@ -61,6 +61,9 @@ function Messenger() {
   return (
     <div className="messenger-bcg">
       <div className="messenger-container">
+        <Link to={`/allmessenger/${user._id}`} className="back-button">
+          Back to Messages
+        </Link>
         {property && (
           <div className="property-chat-container">
             <img src={property.imgUrl} alt="house"></img>
