@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { API_URL } from "../../config/config.index";
 import { AuthContext } from "../../context/auth.context";
+import "../../css/CreateMessenger.css";
 
 function CreateMessenger() {
   const { user } = useContext(AuthContext);
@@ -43,10 +44,13 @@ function CreateMessenger() {
   };
 
   return (
-    <div>
-      <h1>Messenger</h1>
-
-      <button type="submit" className="auth-btn" onClick={handleChat}>
+    <div className="create-messenger">
+      <h1>Contact with the real estate agent </h1>
+      <p>
+        Start talking to your real estate agent now and make your dream of
+        buying your home come true!
+      </p>
+      <button type="submit" onClick={handleChat}>
         Chat Start
       </button>
     </div>
