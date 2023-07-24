@@ -34,7 +34,7 @@ function OneProperty() {
     try {
       alert("Property removed successfully!");
       const { data } = await axios.delete(
-        `${API_URL}/property/${property_id}`,
+        `${API_URL}/property/oneproperty/${property_id}`,
         property_id
       );
       navigate(`/realestateallproperties/${user._id}`);
