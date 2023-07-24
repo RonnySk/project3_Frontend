@@ -31,7 +31,6 @@ function Step1Component() {
           circumstances. Their expertise and industry knowledge can save you time, money, and potential headaches along the way.
         </p>
       </div>
-      <div className="step1-image"></div>
     </div>
   );
 }

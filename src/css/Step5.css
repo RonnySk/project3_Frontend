@@ -1,0 +1,76 @@
+/* Step 5 Component */
+.step5-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 50px;
+  background-color: #f3f4f6;
+  border-radius: 20px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.05);
+}
+
+.step5-content {
+  width: 60%;
+  padding-right: 50px;
+}
+
+.step5-heading {
+  font-size: 42px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 30px;
+}
+
+.step5-text {
+  font-size: 20px;
+  color: #4b5563;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.step5-subheading {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 20px;
+}
+
+.step5-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+.step5-list li {
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #4b5563;
+}
+
+.step5-list li::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #1f2937;
+}
+
+.step5-image {
+  width: 35%;
+}
+
+.step5-img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 20px;
+  margin-top: 100px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
