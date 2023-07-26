@@ -147,13 +147,14 @@ function OneProperty() {
             </GoogleMap>
           )}
           <p>
-            <span>ADRESS</span> {property.street} {property.propertyNumber}
+            <span>ADRESS</span> {property.street}, {property.propertyNumber},{" "}
+            {property.city}, {property.country}
           </p>
         </section>
         <hr></hr>
-        <div className="property-details-rea-btn">
-          {user.isAgent && (
-            <div>
+        {user.isAgent && (
+          <div className="property-details-rea-btn">
+            <div className="property-details-delete-btn">
               <Link
                 className="calculator-button"
                 to={`/updateproperty/${property._id}`}
@@ -167,15 +168,15 @@ function OneProperty() {
               >
                 Delete
               </button>
-              <Link
-                to={`/realestateallproperties/${user._id}`}
-                className="cta-button"
-              >
-                Back to your properties
-              </Link>
             </div>
-          )}
-        </div>
+            <Link
+              to={`/realestateallproperties/${user._id}`}
+              className="cta-button"
+            >
+              Back to your properties
+            </Link>
+          </div>
+        )}
       </div>
     );
   }
