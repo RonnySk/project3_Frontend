@@ -180,18 +180,4 @@ function PropertiesContent({
   );
 }
 
-// Property card component
-// function PropertyCard({ property }) {
-//   return (
-//     <div className="property-card">
-//       <h2>{property.title}</h2>
-//       <p>Price: {property.price}</p>
-//       <p>Size: {property.size}</p>
-//       <p>Rooms: {property.room}</p>
-//       <img src={property.imgUrl} alt={property.title} />
-//       <p>{property.description}</p>
-//     </div>
-//   );
-// }
-
 export default Step3Component;

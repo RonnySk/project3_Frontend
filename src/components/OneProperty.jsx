@@ -64,6 +64,7 @@ function OneProperty() {
   } else {
     return (
       <div className="property-details-container">
+        {/* {!user.isAgent && <button className="back-button">Back</button>} */}
         <section>
           <Carousel
             showIndicators
@@ -152,7 +153,7 @@ function OneProperty() {
           </p>
         </section>
         <hr></hr>
-        {user.isAgent && (
+        {user.isAgent ? (
           <div className="property-details-rea-btn">
             <div className="property-details-delete-btn">
               <Link
@@ -176,6 +177,10 @@ function OneProperty() {
               Back to your properties
             </Link>
           </div>
+        ) : (
+          <Link className="dlt-upd-btn" to="/createmessenger" state={property}>
+            Send a message to the Agent
+          </Link>
         )}
       </div>
     );
