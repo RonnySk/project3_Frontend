@@ -9,6 +9,8 @@ function AddProperty() {
   const [title, setTitle] = useState("");
   const [street, setStreet] = useState("");
   const [propertyNumber, setPropertyNumber] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
   const [price, setPrice] = useState("");
   const [type, setType] = useState("");
   const [size, setSize] = useState("");
@@ -34,6 +36,8 @@ function AddProperty() {
   const handleTitle = (e) => setTitle(e.target.value);
   const handleStreet = (e) => setStreet(e.target.value);
   const handlePropertyNumber = (e) => setPropertyNumber(e.target.value);
+  const handleCity = (e) => setCity(e.target.value);
+  const handleCountry = (e) => setCountry(e.target.value);
   const handlePrice = (e) => setPrice(e.target.value);
   const handleType = (e) => setType(e.target.value);
   const handleSize = (e) => setSize(e.target.value);
@@ -65,6 +69,8 @@ function AddProperty() {
       title,
       street,
       propertyNumber,
+      city,
+      country,
       price,
       type,
       size,
@@ -144,6 +150,24 @@ function AddProperty() {
             name="propertyNumber"
             value={propertyNumber}
             onChange={handlePropertyNumber}
+            className="auth-input"
+          />
+
+          <label>City:</label>
+          <input
+            type="text"
+            name="city"
+            value={city}
+            onChange={handleCity}
+            className="auth-input"
+          />
+
+          <label>Country:</label>
+          <input
+            type="text"
+            name="country"
+            value={country}
+            onChange={handleCountry}
             className="auth-input"
           />
 

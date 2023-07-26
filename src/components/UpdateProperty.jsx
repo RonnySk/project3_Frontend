@@ -14,6 +14,8 @@ function UpdateProperty() {
   const [title, setTitle] = useState("");
   const [street, setStreet] = useState("");
   const [propertyNumber, setPropertyNumber] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
   const [price, setPrice] = useState("");
   const [type, setType] = useState("");
   const [size, setSize] = useState("");
@@ -36,6 +38,8 @@ function UpdateProperty() {
       setTitle(oneProperty.title);
       setStreet(oneProperty.street);
       setPropertyNumber(oneProperty.propertyNumber);
+      setCity(oneProperty.city);
+      setCountry(oneProperty.country);
       setPrice(oneProperty.price);
       setType(oneProperty.type);
       setSize(oneProperty.size);
@@ -59,6 +63,8 @@ function UpdateProperty() {
   const handleTitle = (e) => setTitle(e.target.value);
   const handleStreet = (e) => setStreet(e.target.value);
   const handlePropertyNumber = (e) => setPropertyNumber(e.target.value);
+  const handleCity = (e) => setCity(e.target.value);
+  const handleCountry = (e) => setCountry(e.target.value);
   const handlePrice = (e) => setPrice(e.target.value);
   const handleType = (e) => setType(e.target.value);
   const handleSize = (e) => setSize(e.target.value);
@@ -91,6 +97,8 @@ function UpdateProperty() {
         title,
         street,
         propertyNumber,
+        city,
+        country,
         price,
         type,
         size,
@@ -174,6 +182,24 @@ function UpdateProperty() {
             placeholder={property.propertyNumber}
             value={propertyNumber}
             onChange={handlePropertyNumber}
+            className="auth-input"
+          />
+
+          <label>City:</label>
+          <input
+            type="text"
+            name="city"
+            value={city}
+            onChange={handleCity}
+            className="auth-input"
+          />
+
+          <label>Country:</label>
+          <input
+            type="text"
+            name="country"
+            value={country}
+            onChange={handleCountry}
             className="auth-input"
           />
 
