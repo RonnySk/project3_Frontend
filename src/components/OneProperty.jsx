@@ -156,14 +156,14 @@ function OneProperty() {
           <div className="property-details-rea-btn">
             <div className="property-details-delete-btn">
               <Link
-                className="calculator-button"
+                className="dlt-upd-btn"
                 to={`/updateproperty/${property._id}`}
               >
                 Update
               </Link>
               <button
                 type="submit"
-                className="calculator-button"
+                className="dlt-upd-btn"
                 onClick={handleDelete}
               >
                 Delete
@@ -171,7 +171,7 @@ function OneProperty() {
             </div>
             <Link
               to={`/realestateallproperties/${user._id}`}
-              className="cta-button"
+              className="dlt-upd-btn"
             >
               Back to your properties
             </Link>

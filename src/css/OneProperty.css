@@ -119,15 +119,39 @@
   }
   
   .property-details-section-adress p {
-    margin-top: 10px;
+    margin-top: 15px;
   }
-  
+
+  .property-details-section-adress span {
+    margin-right: 5px;
+  }
+ 
   .property-details-delete-btn{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 0; 
+    width: 207px;
   }
+
+  .dlt-upd-btn{
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    
+    .dlt-upd-btn:hover {
+      background-color: #0056b3;
+    }
+  
 
   .property-details-rea-btn{
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
