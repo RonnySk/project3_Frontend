@@ -16,6 +16,7 @@ import CreateMessenger from "../src/messenger/CreateMessenger";
 import Messenger from "../src/messenger/Messenger";
 import AllMessengersPage from "../src/messenger/AllMessengersPage";
 import UpdateProperty from "./components/UpdateProperty";
+import Step3Component from "./components/Step3Component";
 
 function App() {
   return (
@@ -47,7 +48,7 @@ function App() {
             path="/allmessenger/:user_id"
             element={<AllMessengersPage />}
           />
-
+          {/* <Route path="/step3" element={<Step3Component />} /> */}
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>

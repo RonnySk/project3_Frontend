@@ -9,7 +9,7 @@ function PropertyCard({ property }) {
   return (
     <div className="property-card">
       <div className="img-wrapper">
-        <img src={property.imgUrl} alt={property.title} />
+        <img src={property.imgUrl[0]} alt={property.title} />
       </div>
       <div className="info">
         <h2 className="title">{property.title}</h2>

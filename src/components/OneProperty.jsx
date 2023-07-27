@@ -64,7 +64,6 @@ function OneProperty() {
   } else {
     return (
       <div className="property-details-container">
-        {/* {!user.isAgent && <button className="back-button">Back</button>} */}
         <section>
           <Carousel
             showIndicators
@@ -178,9 +177,18 @@ function OneProperty() {
             </Link>
           </div>
         ) : (
-          <Link className="dlt-upd-btn" to="/createmessenger" state={property}>
-            Send a message to the Agent
-          </Link>
+          <div className="property-details-user-btn">
+            <Link
+              className="dlt-upd-btn"
+              to="/createmessenger"
+              state={property}
+            >
+              Send a message to the Agent
+            </Link>
+            <Link className="dlt-upd-btn" to="/steps">
+              Back
+            </Link>
+          </div>
         )}
       </div>
     );
