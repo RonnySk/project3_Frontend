@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import "../App.css";
 import Logo from "../images/Logo_HousingRY.png";
-import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import "../css/NavBar.css";
 
 function NavBar() {
   const { isLoggedIn, logOutUser, user } = useContext(AuthContext);
-
-  console.log("user ate home", user);
 
   return (
     <nav className="navbar">
@@ -16,49 +13,57 @@ function NavBar() {
         <img src={Logo} alt="Logo" />
       </Link>
 
-      {!isLoggedIn && (
-        <div className="nav-links-container">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link to="/" className="nav-link">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/login" className="nav-link">
-                Login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/signup" className="nav-link">
-                Signup
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
-
-      {isLoggedIn && (
+      <div className="nav-links-container">
         <ul className="navbar-nav">
-          <li className="nav-item">
-            {user.isAgent ? (
-              <Link to="/realEstateHome" className="nav-link">
-                Home
-              </Link>
-            ) : (
-              <div>
-                <Link to="/home" className="nav-link">
+          {!isLoggedIn ? (
+            <>
+              <li className="nav-item">
+                <Link to="/" className="nav-link">
                   Home
                 </Link>
-                <Link to="/steps" className="nav-link">
-                  Steps
+              </li>
+              <li className="nav-item">
+                <Link to="/login" className="nav-link">
+                  Login
                 </Link>
-              </div>
-            )}
-            <button onClick={logOutUser}>Logout</button>
-          </li>
+              </li>
+              <li className="nav-item">
+                <Link to="/signup" className="nav-link">
+                  Signup
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+              {user.isAgent ? (
+                <li className="nav-item">
+                  <Link to="/realEstateHome" className="nav-link">
+                    Home
+                  </Link>
+                </li>
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <Link to="/home" className="nav-link">
+                      Home
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/steps" className="nav-link">
+                      Steps
+                    </Link>
+                  </li>
+                </>
+              )}
+              <li className="nav-item">
+                <button className="button" onClick={logOutUser}>
+                  Logout
+                </button>
+              </li>
+            </>
+          )}
         </ul>
-      )}
+      </div>
     </nav>
   );
 }

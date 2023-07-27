@@ -58,38 +58,17 @@ function Calculator() {
       <form className="calculator-form" onSubmit={handleCalculatorSubmit}>
         <div className="form-group">
           <label htmlFor="loanAmount">Loan Amount</label>
-          <input
-            type="number"
-            id="loanAmount"
-            name="loanAmount"
-            value={loanAmount}
-            onChange={handleLoanAmount}
-            required
-          />
+          <input type="number" id="loanAmount" name="loanAmount" value={loanAmount} onChange={handleLoanAmount} required />
         </div>
 
         <div className="form-group">
           <label htmlFor="interestRate">Interest Rate</label>
-          <input
-            type="number"
-            id="interestRate"
-            name="interestRate"
-            value={interestRate}
-            onChange={handleInterestRate}
-            required
-          />
+          <input type="number" id="interestRate" name="interestRate" value={interestRate} onChange={handleInterestRate} required />
         </div>
 
         <div className="form-group">
           <label htmlFor="duration">Years</label>
-          <input
-            type="number"
-            id="duration"
-            name="duration"
-            value={duration}
-            onChange={handleDuration}
-            required
-          />
+          <input type="number" id="duration" name="duration" value={duration} onChange={handleDuration} required />
         </div>
 
         <button type="submit" className="calculator-button">
@@ -99,21 +78,11 @@ function Calculator() {
 
       {calculatorData && (
         <div className="calculator-results">
-          <h3 className="calculator-result">
-            Monthly Payment: {calculatorData.monthly_payment.total}
-          </h3>
-          <h3 className="calculator-result">
-            Total Interest Rate: {calculatorData.total_interest_paid}
-          </h3>
-          <h3 className="calculator-result">
-            Annual Payment: {calculatorData.annual_payment.total}
-          </h3>
+          <h3 className="calculator-result">Monthly Payment: {calculatorData.monthly_payment.total}</h3>
+          <h3 className="calculator-result">Total Interest Rate: {calculatorData.total_interest_paid}</h3>
+          <h3 className="calculator-result">Annual Payment: {calculatorData.annual_payment.total}</h3>
 
-          <form className="calculator-form" onSubmit={handleSaveInfo}>
-            <button type="submit" className="calculator-button">
-              Save Info
-            </button>
-          </form>
+          <form className="calculator-form" onSubmit={handleSaveInfo}></form>
         </div>
       )}
     </div>

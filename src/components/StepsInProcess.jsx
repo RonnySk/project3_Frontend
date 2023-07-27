@@ -76,6 +76,7 @@ function StepsInProcess() {
   };
 
   const StepComponent = stepComponents[step];
+  const isLastStep = step === 5;
 
   return (
     <div className="steps-in-process">
@@ -84,12 +85,16 @@ function StepsInProcess() {
       <Chatbot />
       <TasksList tasks={stepTasks[step]} checklist={checklist} currentStep={step} toggleCheck={toggleCheck} />
       <div className="button-container">
-        <button className="button" onClick={prevStep}>
-          Previous
-        </button>
-        <button className="button" onClick={nextStep}>
-          Next
-        </button>
+        {step > 1 && ( // Show "Previous" button for all steps except Step 1
+          <button className="button" onClick={prevStep}>
+            Previous
+          </button>
+        )}
+        {!isLastStep && ( // Show "Next" button for all steps except Step 5
+          <button className="button" onClick={nextStep}>
+            Next
+          </button>
+        )}
       </div>
       {popupText && <Popup text={popupText} onClose={closePopup} />}
     </div>

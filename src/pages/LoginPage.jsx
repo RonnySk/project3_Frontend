@@ -1,8 +1,9 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { API_URL } from "../config/config.index";
+import "../css/Auth.css";
 
 function LoginPage(props) {
   const [email, setEmail] = useState("");
@@ -28,11 +29,7 @@ function LoginPage(props) {
         authenticateUser();
       })
       .catch((error) => {
-        if (
-          error.response &&
-          error.response.data &&
-          error.response.data.message
-        ) {
+        if (error.response && error.response.data && error.response.data.message) {
           const errorDescription = error.response.data.message;
           setErrorMessage(errorDescription);
         } else {
@@ -49,22 +46,10 @@ function LoginPage(props) {
 
         <form onSubmit={handleLoginSubmit} className="auth-form">
           <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleEmail}
-            className="auth-input"
-          />
+          <input type="email" name="email" value={email} onChange={handleEmail} className="auth-input" />
 
           <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handlePassword}
-            className="auth-input"
-          />
+          <input type="password" name="password" value={password} onChange={handlePassword} className="auth-input" />
 
           <button type="submit" className="auth-btn">
             Login

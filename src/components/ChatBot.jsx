@@ -1,24 +1,20 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../css/ChatBot.css";
-import RobotIcon from "../images/robot.jpg"; // Import the robot image here
+import RobotIcon from "../images/robot.jpg";
+import CloseIcon from "../images/close.png";
 
 function Chatbot() {
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState("");
-  const [chatOpen, setChatOpen] = useState(false); // Add a new state to toggle chat
+  const [chatOpen, setChatOpen] = useState(false);
 
-  const BASE_URL =
-    process.env.REACT_APP_API_URL ||
-    window.location.protocol + "//" + window.location.hostname + ":5005";
+  const BASE_URL = process.env.REACT_APP_API_URL || window.location.protocol + "//" + window.location.hostname + ":5005";
 
   const handleSend = async () => {
     setUserInput("");
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { user: "user", text: userInput },
-    ]);
+    setMessages((prevMessages) => [...prevMessages, { user: "user", text: userInput }]);
 
     try {
       setLoading(true);
@@ -29,10 +25,7 @@ function Chatbot() {
 
       const botResponse = response.data;
 
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { user: "bot", text: botResponse },
-      ]);
+      setMessages((prevMessages) => [...prevMessages, { user: "bot", text: botResponse }]);
     } catch (error) {
       console.error("Error while fetching data:", error);
     } finally {
@@ -42,14 +35,10 @@ function Chatbot() {
 
   return (
     <div className="chatbot-container">
-      <img
-        src={RobotIcon}
-        alt="Robot Icon"
-        className="robot-image"
-        onClick={() => setChatOpen(!chatOpen)}
-      />
+      <img src={RobotIcon} alt="Robot Icon" className="robot-image" onClick={() => setChatOpen(!chatOpen)} />
       {chatOpen && (
         <div className="chat-interface">
+          <img src={CloseIcon} alt="Close Icon" className="close-icon" onClick={() => setChatOpen(false)} />
           <div className="messages-container">
             {messages.map((message, index) => (
               <p key={index} className={message.user}>
@@ -65,10 +54,7 @@ function Chatbot() {
               disabled={loading}
               placeholder="Type your message..."
             />
-            <button
-              onClick={handleSend}
-              disabled={loading || userInput.trim() === ""}
-            >
+            <button onClick={handleSend} disabled={loading || userInput.trim() === ""}>
               Send
             </button>
           </div>

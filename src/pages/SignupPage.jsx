@@ -1,7 +1,8 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config/config.index";
+import "../css/Auth.css"; // Import the Auth.css file for styling
 
 function SignupPage(props) {
   const [email, setEmail] = useState("");
@@ -40,40 +41,17 @@ function SignupPage(props) {
 
         <form onSubmit={handleSignupSubmit} className="auth-form">
           <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleEmail}
-            className="auth-input"
-          />
+          <input type="email" name="email" value={email} onChange={handleEmail} className="auth-input" />
 
           <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handlePassword}
-            className="auth-input"
-          />
+          <input type="password" name="password" value={password} onChange={handlePassword} className="auth-input" />
 
           <label>Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleName}
-            className="auth-input"
-          />
+          <input type="text" name="name" value={name} onChange={handleName} className="auth-input" />
 
           <div className="auth-checkbox">
-            <input
-              type="checkbox"
-              name="isAgent"
-              value={isAgent}
-              onChange={handleIsAgent}
-            />
-            <label>Are you Real Estate Agent?</label>
+            <input type="checkbox" name="isAgent" checked={isAgent} onChange={handleIsAgent} />
+            <label>Are you a Real Estate Agent?</label>
           </div>
 
           <button type="submit" className="auth-btn">
@@ -84,7 +62,7 @@ function SignupPage(props) {
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 
         <p className="auth-link">
-          Already have account? <Link to={"/login"}> Login</Link>
+          Already have an account? <Link to={"/login"}> Login</Link>
         </p>
       </div>
     </div>

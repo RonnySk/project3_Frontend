@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-around;
   width: 100%;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .steps-list-item {
@@ -42,6 +42,10 @@
   width: 20px;
   height: 20px;
   margin-left: auto;
+}
+
+.steps-in-process {
+  padding-top: 20px;
 }
 
 .button-container {
