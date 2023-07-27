@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { API_URL } from "../config/config.index";
 import { AuthContext } from "../context/auth.context";
+import "../css/AddProperty.css";
 
 function UpdateProperty() {
   const { user } = useContext(AuthContext);
