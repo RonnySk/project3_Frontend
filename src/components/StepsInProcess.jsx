@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Step1Component from "./Step1Component";
 import Step2Component from "./Step2Component";
 import Step3Component from "./Step3Component";
+import Step4Component from "./Step4Component";
 import Step5Component from "./Step5Component";
 import StepsList from "./StepsList";
 import TasksList from "./TaskList";
@@ -62,6 +63,7 @@ function StepsInProcess() {
     1: Step1Component,
     2: Step2Component,
     3: Step3Component,
+    4: Step4Component,
     5: Step5Component,
   };
 

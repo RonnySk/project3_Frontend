@@ -15,9 +15,7 @@ function Messenger() {
 
   const getAllMessages = async () => {
     try {
-      const { data } = await axios.get(
-        `${API_URL}/messenger/message/${messenger_id}`
-      );
+      const { data } = await axios.get(`${API_URL}/messenger/message/${messenger_id}`);
 
       const { messages } = data;
       const { propertyId } = data;
@@ -77,10 +75,7 @@ function Messenger() {
               <p>
                 <span>Price:</span> €{property.price}
               </p>
-              <Link
-                className="property-details-btn"
-                to={`/oneproperty/${property._id}`}
-              >
+              <Link className="property-details-btn" to={`/oneproperty/${property._id}`}>
                 Property Details
               </Link>
             </div>
@@ -95,12 +90,9 @@ function Messenger() {
                     <div className="message-container-left">
                       <div className="left-side-message">
                         <p>{oneMessage.message}</p>
-                        <p className="message-sender-name">
-                          {oneMessage.sender.name}
-                        </p>
+                        <p className="message-sender-name">{oneMessage.sender.name}</p>
                         <small className="message-date-left">
-                          {oneMessage.created_at.slice(0, 10)}{" "}
-                          {oneMessage.created_at.slice(11, 16)}
+                          {oneMessage.created_at.slice(0, 10)} {oneMessage.created_at.slice(11, 16)}
                         </small>
                       </div>
                     </div>
@@ -108,12 +100,9 @@ function Messenger() {
                     <div className="message-container-right">
                       <div className="right-side-message">
                         <p>{oneMessage.message}</p>
-                        <p className="message-sender-name">
-                          {oneMessage.sender.name}
-                        </p>
+                        <p className="message-sender-name">{oneMessage.sender.name}</p>
                         <small className="message-date-right">
-                          {oneMessage.created_at.slice(0, 10)}{" "}
-                          {oneMessage.created_at.slice(11, 16)}
+                          {oneMessage.created_at.slice(0, 10)} {oneMessage.created_at.slice(11, 16)}
                         </small>
                       </div>
                     </div>
@@ -123,14 +112,7 @@ function Messenger() {
             })}
         </div>
         <form className="messenger-form" onSubmit={handleAddMessageSubmit}>
-          <input
-            type="text"
-            name="message"
-            placeholder="Type your message"
-            value={message}
-            onChange={handleMessage}
-            className="messenger-input"
-          />
+          <input type="text" name="message" placeholder="Type your message" value={message} onChange={handleMessage} className="messenger-input" />
 
           <button type="submit" className="messenger-btn">
             Send

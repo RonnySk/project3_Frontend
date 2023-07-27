@@ -55,10 +55,7 @@ function AllMessengersPage() {
               <img src={oneMessenger.propertyId.imgUrl[0]} alt="house"></img>
               <div className="messenger-card-info">
                 <h2>{oneMessenger.propertyId.title}</h2>
-                <Link
-                  className="openMessenger-link"
-                  to={`/messenger/${oneMessenger._id}`}
-                >
+                <Link className="openMessenger-link" to={`/messenger/${oneMessenger._id}`}>
                   Open the Messages
                 </Link>
               </div>
@@ -66,6 +63,11 @@ function AllMessengersPage() {
           );
         })
       )}
+
+      <Link className="back-button" to="/steps">
+        {" "}
+        Back{" "}
+      </Link>
     </div>
   );
 }
