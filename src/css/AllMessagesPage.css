@@ -62,3 +62,15 @@
     border-radius: 20px;
     margin-top: 30px;
   }
+
+  .msg-back-button{
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    width: 180px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 20px;
+  }

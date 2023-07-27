@@ -123,14 +123,14 @@ function AddProperty() {
           </div>
         ))}
 
-        <form onSubmit={handleAddPropertySubmit} className="auth-form">
+        <form onSubmit={handleAddPropertySubmit} className="addproperty-form">
           <label>Title:</label>
           <input
             type="text"
             name="title"
             value={title}
             onChange={handleTitle}
-            className="auth-input"
+            className="addproperty-input"
           />
 
           <label>Street:</label>
@@ -139,7 +139,7 @@ function AddProperty() {
             name="street"
             value={street}
             onChange={handleStreet}
-            className="auth-input"
+            className="addproperty-input"
           />
 
           <label>Property Number:</label>
@@ -148,7 +148,7 @@ function AddProperty() {
             name="propertyNumber"
             value={propertyNumber}
             onChange={handlePropertyNumber}
-            className="auth-input"
+            className="addproperty-input"
           />
 
           <label>City:</label>
@@ -157,7 +157,7 @@ function AddProperty() {
             name="city"
             value={city}
             onChange={handleCity}
-            className="auth-input"
+            className="addproperty-input"
           />
 
           <label>Country:</label>
@@ -166,7 +166,7 @@ function AddProperty() {
             name="country"
             value={country}
             onChange={handleCountry}
-            className="auth-input"
+            className="addproperty-input"
           />
 
           <label>Price:</label>
@@ -175,7 +175,7 @@ function AddProperty() {
             name="price"
             value={price}
             onChange={handlePrice}
-            className="auth-input"
+            className="addproperty-input"
           />
 
           <label>Type:</label>
@@ -184,7 +184,7 @@ function AddProperty() {
             name="type"
             value={type}
             onChange={handleType}
-            className="auth-input"
+            className="addproperty-input"
           />
 
           <label>Size:</label>
@@ -193,7 +193,7 @@ function AddProperty() {
             name="size"
             value={size}
             onChange={handleSize}
-            className="auth-input"
+            className="addproperty-input"
           />
 
           <label>Room:</label>
@@ -202,7 +202,7 @@ function AddProperty() {
             name="room"
             value={room}
             onChange={handleRoom}
-            className="auth-input"
+            className="addproperty-input"
           />
 
           <label>Bathroom:</label>
@@ -211,7 +211,7 @@ function AddProperty() {
             name="bathroom"
             value={bathroom}
             onChange={handleBathroom}
-            className="auth-input"
+            className="addproperty-input"
           />
 
           <label>Year:</label>
@@ -220,7 +220,7 @@ function AddProperty() {
             name="year"
             value={year}
             onChange={handleYear}
-            className="auth-input"
+            className="addproperty-input"
           />
 
           <label>Garage:</label>
@@ -229,7 +229,7 @@ function AddProperty() {
             name="garage"
             value={garage}
             onChange={handleGarage}
-            className="auth-input"
+            className="addproperty-input"
           />
 
           <label>Description:</label>
@@ -237,10 +237,10 @@ function AddProperty() {
             name="description"
             value={description}
             onChange={handleDescription}
-            className="auth-input"
+            className="addproperty-input"
           />
 
-          <button type="submit" className="auth-btn">
+          <button type="submit" className="addproperty-btn">
             Add property
           </button>
         </form>

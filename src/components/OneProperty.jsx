@@ -108,7 +108,16 @@ function OneProperty() {
         </section>
         <section className="property-details-section-title">
           <h1>{property.title}</h1>
-          <p>{property.price} €</p>
+          <div className="property-details-section-title-info">
+            <p>
+              <span>PRICE</span> {property.price} €
+            </p>
+            {!user.isAgent && (
+              <Link className="msg-btn" to="/createmessenger" state={property}>
+                Send a message to the Agent
+              </Link>
+            )}
+          </div>
         </section>
         <hr></hr>
         <section className="property-details-section-info">

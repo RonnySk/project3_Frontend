@@ -1,10 +1,4 @@
-/* * {
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  } */
-  
+ 
   .property-details-container{
     display: flex;
     flex-direction: column;
@@ -65,7 +59,27 @@
   }
 
   .property-details-section-title h1{
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+  }
+
+  .property-details-section-title-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    
+  }
+  
+  .msg-btn{
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
   }
 
   hr{
@@ -80,6 +94,7 @@
     align-items: center;
     margin-top: 20px;
   }
+
 
   .property-details-section-info p{
     display: flex;
@@ -143,7 +158,7 @@
       border-radius: 20px;
       cursor: pointer;
       text-decoration: none;
-      margin-top: 20px;
+      margin-top: 20px;  
     }
     
     .dlt-upd-btn:hover {
