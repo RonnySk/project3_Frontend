@@ -99,21 +99,19 @@ function AddProperty() {
     <div className="auth-page">
       <div className="auth-container">
         <h1 className="auth-header">Add property</h1>
-
-        <label>Add fotos:</label>
-        <input
-          type="file"
-          id="file"
-          className="auth-input"
-          onChange={handleSelectFile}
-          multiple={false}
-        />
-        <button onClick={handleUpload} className="auth-btn">
-          Add image
-        </button>
+        <div className="add-photo">
+          <label>Add fotos:</label>
+          <input
+            type="file"
+            id="file"
+            onChange={handleSelectFile}
+            multiple={false}
+          />
+          <button onClick={handleUpload}>Add image</button>
+        </div>
 
         {imgUrl.map((oneImgUrl, index) => (
-          <div key={oneImgUrl}>
+          <div className="add-photo-card" key={oneImgUrl}>
             <img src={oneImgUrl} alt="property"></img>
             <button
               onClick={() => {

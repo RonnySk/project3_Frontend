@@ -41,6 +41,50 @@
   color: #333;
 }
 
+.add-photo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+
+.add-photo label{
+  display: flex;
+  align-items: center;
+  width: 100px;
+}
+
+.add-photo input{
+  display: flex;
+  align-items: center;
+  width: 380px;
+  margin: 18px 10px ;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  color: #333;
+}
+
+.add-photo button{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 120px;
+  height: 50px;
+}
+
+.add-photo-card{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 600px;
+}
+
 .auth-btn {
   background-color: #007bff;
   color: #fff;

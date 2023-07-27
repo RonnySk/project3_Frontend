@@ -142,8 +142,12 @@ function UpdateProperty() {
 
         {property &&
           property.imgUrl.map((oneImgUrl, index) => (
-            <div key={oneImgUrl}>
-              <img src={oneImgUrl} alt="property"></img>
+            <div className="add-photo" key={oneImgUrl}>
+              <img
+                className="add-photo-card"
+                src={oneImgUrl}
+                alt="property"
+              ></img>
               <button
                 onClick={() => {
                   setImgUrl(imgUrl.filter((a) => a !== oneImgUrl));

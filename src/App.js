@@ -48,7 +48,6 @@ function App() {
             path="/allmessenger/:user_id"
             element={<AllMessengersPage />}
           />
-          {/* <Route path="/step3" element={<Step3Component />} /> */}
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
