@@ -107,7 +107,9 @@ function AddProperty() {
             onChange={handleSelectFile}
             multiple={false}
           />
-          <button onClick={handleUpload}>Add image</button>
+          <button className="add-photo-btn" onClick={handleUpload}>
+            Add image
+          </button>
         </div>
 
         {imgUrl.map((oneImgUrl, index) => (

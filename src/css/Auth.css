@@ -11,8 +11,7 @@
   border-radius: 12px;
   padding: 40px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  max-width: 90%;
+  width: 100%;
 }
 
 .auth-header {
@@ -26,6 +25,7 @@
 .auth-form {
   display: flex;
   flex-direction: column;
+  width: 65%;
 }
 
 .auth-input {

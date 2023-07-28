@@ -32,49 +32,51 @@ function AllMessengersPage() {
   console.log("all messengers", allmessenger);
 
   return (
-    <div className="allMessengers-container">
-      <h1>Messages</h1>
+    <div className="allMessengers-card-container">
+      <div className="allMessengers-container">
+        <h1>Messages</h1>
 
-      {allmessenger.length === 0 ? (
-        <div className="noMessage-container">
-          <p>You don't have any Messages</p>
-          {user.isAgent ? (
-            <Link className="noMessage-container-link" to="/realEstateHome">
-              Back to home
-            </Link>
-          ) : (
-            <Link className="noMessage-container-link" to="/home">
-              Back to home
-            </Link>
-          )}
-        </div>
-      ) : (
-        allmessenger.map((oneMessenger, index) => {
-          return (
-            <div className="messenger-card-container" key={index}>
-              <img src={oneMessenger.propertyId.imgUrl[0]} alt="house"></img>
-              <div className="messenger-card-info">
-                <h2>{oneMessenger.propertyId.title}</h2>
-                <Link
-                  className="openMessenger-link"
-                  to={`/messenger/${oneMessenger._id}`}
-                >
-                  Open the Messages
-                </Link>
+        {allmessenger.length === 0 ? (
+          <div className="noMessage-container">
+            <p>You don't have any Messages</p>
+            {user.isAgent ? (
+              <Link className="noMessage-container-link" to="/realEstateHome">
+                Back to home
+              </Link>
+            ) : (
+              <Link className="noMessage-container-link" to="/home">
+                Back to home
+              </Link>
+            )}
+          </div>
+        ) : (
+          allmessenger.map((oneMessenger, index) => {
+            return (
+              <div className="messenger-card-container" key={index}>
+                <img src={oneMessenger.propertyId.imgUrl[0]} alt="house"></img>
+                <div className="messenger-card-info">
+                  <h2>{oneMessenger.propertyId.title}</h2>
+                  <Link
+                    className="openMessenger-link"
+                    to={`/messenger/${oneMessenger._id}`}
+                  >
+                    Open the Messages
+                  </Link>
+                </div>
               </div>
-            </div>
-          );
-        })
-      )}
-      {user.isAgent ? (
-        <Link className="msg-back-button" to="/realEstateHome">
-          Back
-        </Link>
-      ) : (
-        <Link className="msg-back-button" to="/steps">
-          Back
-        </Link>
-      )}
+            );
+          })
+        )}
+        {user.isAgent ? (
+          <Link className="msg-back-button" to="/realEstateHome">
+            Back
+          </Link>
+        ) : (
+          <Link className="msg-back-button" to="/steps">
+            Back
+          </Link>
+        )}
+      </div>
     </div>
   );
 }

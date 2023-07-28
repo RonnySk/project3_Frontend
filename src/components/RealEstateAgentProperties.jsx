@@ -28,39 +28,41 @@ function RealEstateAgentProperties() {
     return <p>Loading ...</p>;
   } else {
     return (
-      <div className="all-properties-container">
-        <h1>Your properties</h1>
-        <Link className="add-property-btn" to="/addProperty">
-          Add new Property
-        </Link>
+      <div className="all-properties-card-container">
+        <div className="all-properties-container">
+          <h1>Your properties</h1>
+          <Link className="add-property-btn" to="/addProperty">
+            Add new Property
+          </Link>
 
-        {realEstateProperties.length === 0 ? (
-          <p>loading properties</p>
-        ) : (
-          realEstateProperties.map((property) => {
-            return (
-              <div className="property-chat-container">
-                <img src={property.imgUrl[0]} alt="house"></img>
-                <div className="property-chat-info">
-                  <h3>{property.title}</h3>
-                  <p>
-                    <span>Street:</span> {property.street}{" "}
-                    {property.propertyNumber}
-                  </p>
-                  <p>
-                    <span>Price:</span> €{property.price}
-                  </p>
-                  <Link
-                    className="property-details-btn"
-                    to={`/oneproperty/${property._id}`}
-                  >
-                    Property Details
-                  </Link>
+          {realEstateProperties.length === 0 ? (
+            <p>loading properties</p>
+          ) : (
+            realEstateProperties.map((property) => {
+              return (
+                <div className="property-chat-container">
+                  <img src={property.imgUrl[0]} alt="house"></img>
+                  <div className="property-chat-info">
+                    <h3>{property.title}</h3>
+                    <p>
+                      <span>Street:</span> {property.street}{" "}
+                      {property.propertyNumber}
+                    </p>
+                    <p>
+                      <span>Price:</span> €{property.price}
+                    </p>
+                    <Link
+                      className="property-details-btn"
+                      to={`/oneproperty/${property._id}`}
+                    >
+                      Property Details
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            );
-          })
-        )}
+              );
+            })
+          )}
+        </div>
       </div>
     );
   }

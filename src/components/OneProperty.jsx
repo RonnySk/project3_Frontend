@@ -63,142 +63,148 @@ function OneProperty() {
     return <p>Loading ...</p>;
   } else {
     return (
-      <div className="property-details-container">
-        <section>
-          <Carousel
-            showIndicators
-            renderArrowNext={(clickHandler, hasNext) => {
-              return (
-                hasNext && (
-                  <button
-                    className="nav_btn nav_btn_right"
-                    onClick={clickHandler}
-                  >
-                    <svg>
-                      <use xlinkHref={sprite + "#right"}></use>
-                    </svg>
-                  </button>
-                )
-              );
-            }}
-            renderArrowPrev={(clickHandler, hasNext) => {
-              return (
-                hasNext && (
-                  <button
-                    onClick={clickHandler}
-                    className="nav_btn nav_btn_left"
-                  >
-                    <svg>
-                      <use xlinkHref={sprite + "#left"}></use>
-                    </svg>
-                  </button>
-                )
-              );
-            }}
-            transitionTime={310}
-            swipeable={false}
-            useKeyboardArrows={true}
-          >
-            {property.imgUrl.map((URL, index) => (
-              <div className="slide">
-                <img alt="sample_file" src={URL} key={index} />
-              </div>
-            ))}
-          </Carousel>
-        </section>
-        <section className="property-details-section-title">
-          <h1>{property.title}</h1>
-          <div className="property-details-section-title-info">
-            <p>
-              <span>PRICE</span> {property.price} €
-            </p>
-            {!user.isAgent && (
-              <Link className="msg-btn" to="/createmessenger" state={property}>
-                Send a message to the Agent
-              </Link>
-            )}
-          </div>
-        </section>
-        <hr></hr>
-        <section className="property-details-section-info">
-          <p>
-            <span>PROPERTY TYPE</span> {property.type}
-          </p>
-          <p>
-            <span>BEDROOMS</span> {property.room}
-          </p>
-          <p>
-            <span>BATHROOM</span> {property.bathroom}
-          </p>
-          <p>
-            <span>SIZE</span> {property.size}m²
-          </p>
-          <p>
-            <span>GARAGE</span> {property.garage}
-          </p>
-        </section>
-        <hr></hr>
-        <section className="property-details-section-description">
-          <h2>Description</h2>
-          <p>{property.description}</p>
-        </section>
-        <hr></hr>
-        <section className="property-details-section-adress">
-          {!isLoaded ? (
-            <h1>Loading...</h1>
-          ) : (
-            <GoogleMap
-              mapContainerClassName="map-container"
-              center={geoLocation}
-              zoom={15}
+      <div className="property-card-container">
+        <div className="property-details-container">
+          <section>
+            <Carousel
+              showIndicators
+              renderArrowNext={(clickHandler, hasNext) => {
+                return (
+                  hasNext && (
+                    <button
+                      className="nav_btn nav_btn_right"
+                      onClick={clickHandler}
+                    >
+                      <svg>
+                        <use xlinkHref={sprite + "#right"}></use>
+                      </svg>
+                    </button>
+                  )
+                );
+              }}
+              renderArrowPrev={(clickHandler, hasNext) => {
+                return (
+                  hasNext && (
+                    <button
+                      onClick={clickHandler}
+                      className="nav_btn nav_btn_left"
+                    >
+                      <svg>
+                        <use xlinkHref={sprite + "#left"}></use>
+                      </svg>
+                    </button>
+                  )
+                );
+              }}
+              transitionTime={310}
+              swipeable={false}
+              useKeyboardArrows={true}
             >
-              <MarkerF position={geoLocation} />
-            </GoogleMap>
-          )}
-          <p>
-            <span>ADRESS</span> {property.street}, {property.propertyNumber},{" "}
-            {property.city}, {property.country}
-          </p>
-        </section>
-        <hr></hr>
-        {user.isAgent ? (
-          <div className="property-details-rea-btn">
-            <div className="property-details-delete-btn">
+              {property.imgUrl.map((URL, index) => (
+                <div className="slide">
+                  <img alt="sample_file" src={URL} key={index} />
+                </div>
+              ))}
+            </Carousel>
+          </section>
+          <section className="property-details-section-title">
+            <h1>{property.title}</h1>
+            <div className="property-details-section-title-info">
+              <p>
+                <span>PRICE</span> {property.price} €
+              </p>
+              {!user.isAgent && (
+                <Link
+                  className="msg-btn"
+                  to="/createmessenger"
+                  state={property}
+                >
+                  Send a message to the Agent
+                </Link>
+              )}
+            </div>
+          </section>
+          <hr></hr>
+          <section className="property-details-section-info">
+            <p>
+              <span>PROPERTY TYPE</span> {property.type}
+            </p>
+            <p>
+              <span>BEDROOMS</span> {property.room}
+            </p>
+            <p>
+              <span>BATHROOM</span> {property.bathroom}
+            </p>
+            <p>
+              <span>SIZE</span> {property.size}m²
+            </p>
+            <p>
+              <span>GARAGE</span> {property.garage}
+            </p>
+          </section>
+          <hr></hr>
+          <section className="property-details-section-description">
+            <h2>Description</h2>
+            <p>{property.description}</p>
+          </section>
+          <hr></hr>
+          <section className="property-details-section-adress">
+            {!isLoaded ? (
+              <h1>Loading...</h1>
+            ) : (
+              <GoogleMap
+                mapContainerClassName="map-container"
+                center={geoLocation}
+                zoom={15}
+              >
+                <MarkerF position={geoLocation} />
+              </GoogleMap>
+            )}
+            <p>
+              <span>ADRESS</span> {property.street}, {property.propertyNumber},{" "}
+              {property.city}, {property.country}
+            </p>
+          </section>
+          <hr></hr>
+          {user.isAgent ? (
+            <div className="property-details-rea-btn">
+              <div className="property-details-delete-btn">
+                <Link
+                  className="dlt-upd-btn"
+                  to={`/updateproperty/${property._id}`}
+                >
+                  Update
+                </Link>
+                <button
+                  type="submit"
+                  className="dlt-upd-btn"
+                  onClick={handleDelete}
+                >
+                  Delete
+                </button>
+              </div>
+              <Link
+                to={`/realestateallproperties/${user._id}`}
+                className="dlt-upd-btn"
+              >
+                Back to your properties
+              </Link>
+            </div>
+          ) : (
+            <div className="property-details-user-btn">
               <Link
                 className="dlt-upd-btn"
-                to={`/updateproperty/${property._id}`}
+                to="/createmessenger"
+                state={property}
               >
-                Update
+                Send a message to the Agent
               </Link>
-              <button
-                type="submit"
-                className="dlt-upd-btn"
-                onClick={handleDelete}
-              >
-                Delete
-              </button>
+              <Link className="dlt-upd-btn" to="/steps">
+                Back
+              </Link>
             </div>
-            <Link
-              to={`/realestateallproperties/${user._id}`}
-              className="dlt-upd-btn"
-            >
-              Back to your properties
-            </Link>
-          </div>
-        ) : (
-          <div className="property-details-user-btn">
-            <Link
-              className="dlt-upd-btn"
-              to="/createmessenger"
-              state={property}
-            >
-              Send a message to the Agent
-            </Link>
-            <Link className="dlt-upd-btn" to="/steps">
-              Back
-            </Link>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     );
   }
