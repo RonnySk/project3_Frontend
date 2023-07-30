@@ -40,9 +40,9 @@ function RealEstateAgentProperties() {
           ) : (
             realEstateProperties.map((property) => {
               return (
-                <div className="property-chat-container">
+                <div className="property-container">
                   <img src={property.imgUrl[0]} alt="house"></img>
-                  <div className="property-chat-info">
+                  <div className="property-info">
                     <h3>{property.title}</h3>
                     <p>
                       <span>Street:</span> {property.street}{" "}

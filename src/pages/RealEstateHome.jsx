@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import houseicon from "../images/houseIcon.png";
 import messages from "../images/messenger.png";
-import "../css/RealEstateHome.css";
+import "../css/HomePage.css";
 
 function RealEstateHome() {
   const { user } = useContext(AuthContext);
@@ -19,7 +19,7 @@ function RealEstateHome() {
           </div>
         </section>
         <section className="columns">
-          <div className="column">
+          <div className="home-page-column">
             <div className="column-content">
               <div className="icon">
                 <img src={houseicon} alt="Steps Icon" />
@@ -36,7 +36,7 @@ function RealEstateHome() {
               </Link>
             </div>
           </div>
-          <div className="column">
+          <div className="home-page-column">
             <div className="column-content">
               <div className="icon">
                 <img src={messages} alt="Messages Icon" />

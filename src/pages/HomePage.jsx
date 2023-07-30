@@ -21,7 +21,7 @@ function HomePage() {
           </div>
         </section>
         <section className="columns">
-          <div className="column">
+          <div className="home-page-column">
             <div className="column-content">
               <div className="icon">
                 <img src={stepsicon} alt="Steps Icon" />
@@ -35,7 +35,7 @@ function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="column">
+          <div className="home-page-column">
             <div className="column-content">
               <div className="icon">
                 <img src={messages} alt="Messages Icon" />
