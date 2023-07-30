@@ -117,16 +117,16 @@
 .comparison-container {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 10px 6px;
 }
 
 .column {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 45%;
+  width: 49%;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 10px;
   border-radius: 5px;
   background-color: #fff;
 }
@@ -156,7 +156,7 @@
 .column li {
   padding: 10px;
   border-bottom: 1px solid #e6e6e6;
-  text-align: left;
+  text-align: center;
   font-size: 18px;
   position: relative;
 }
@@ -165,7 +165,7 @@
   content: "✘";
   color: #ff4d4d;
   position: absolute;
-  left: -15px;
+  left: -8px;
   top: 10px;
 }
 
@@ -173,7 +173,7 @@
   content: "✔";
   color: #4caf50;
   position: absolute;
-  left: -15px;
+  left: -4px;
   top: 10px;
 }
 
@@ -182,6 +182,7 @@
   line-height: 1.5;
   margin-bottom: 1.5rem;
   text-align: justify;
+  padding: 10px;
 }
 
 .cta-button {
@@ -210,6 +211,10 @@
   align-items: center;
   padding: 20px;
   background-color: #f5f5f5;
+}
+
+.footer p {
+  text-align: center;
 }
 
 .cta-button {

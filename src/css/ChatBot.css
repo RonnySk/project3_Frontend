@@ -1,5 +1,122 @@
 /* ChatBot.css */
 
+@media (max-width: 768px){
+  /* Chatbot container */
+.chatbot-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  margin-right: 40px;
+  margin-bottom: 50px;
+}
+
+/* Robot Icon */
+.robot-image {
+  cursor: pointer;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+/* Chat interface */
+.chat-interface {
+  margin-top: 10px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 350px;
+  max-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Close Icon */
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Messages container */
+.messages-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-left: 20px;
+}
+
+/* User input container */
+.user-input-container {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #ddd;
+  padding: 20px;
+}
+
+/* User input field */
+.user-input {
+  flex-grow: 1;
+  border: 1px solid #e0e0e0;
+  padding: 14px;
+  border-radius: 24px;
+  margin-right: 10px;
+}
+
+/* Send button */
+button {
+  padding: 14px 24px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Bot message style */
+.messages-container .bot {
+  align-self: flex-start;
+  background: #f0f0f0;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 10px 0;
+  max-width: 70%;
+}
+
+/* User message style */
+.messages-container .user {
+  align-self: flex-end;
+  background: #007bff;
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 10px 0;
+  max-width: 70%;
+}
+
+/* Format the chatbot output to be more readable and natural */
+.messages-container p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+}
+
+@media (min-width: 769px){
 /* Chatbot container */
 .chatbot-container {
   position: fixed;
@@ -112,3 +229,6 @@ button:hover {
   font-size: 16px;
   line-height: 1.6;
 }
+
+}
+
