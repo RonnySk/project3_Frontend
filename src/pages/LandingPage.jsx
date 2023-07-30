@@ -15,7 +15,7 @@ function LandingPage() {
               We simplify the home-buying process. Discover, tour, and buy your
               dream house with us.
             </p>
-            <Link to="/steps" className="cta-button">
+            <Link to="/login" className="cta-button">
               Get Started
             </Link>
           </div>
